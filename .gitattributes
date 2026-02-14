@@ -1,0 +1,15 @@
+# Force LF line endings everywhere to prevent phantom diffs
+* text=auto eol=lf
+
+# LaTeX files
+*.tex text eol=lf
+*.bib text eol=lf
+*.sty text eol=lf
+*.cls text eol=lf
+
+# Binary files — don't touch
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.eps binary
