@@ -1,0 +1,181 @@
+% =============================================================
+% preamble.tex — Преамбула монографии
+% Оформление: СТУ СФУ (СТУ 7.5-07-2021)
+% =============================================================
+
+% --- Язык и шрифты ---
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{tempora}
+
+% --- Геометрия страницы ---
+\usepackage{geometry}
+\geometry{
+  left=3cm, right=1cm,
+  top=2cm, bottom=2cm,
+  nohead
+}
+
+\raggedbottom
+
+% --- Интервалы ---
+\usepackage{setspace}
+\singlespacing
+
+% --- Выравнивание ---
+\tolerance=1000
+\hbadness=1000
+\emergencystretch=1.5em
+
+% --- Абзацный отступ ---
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+% --- Формулы: отступ слева ---
+\setlength{\mathindent}{1.25cm}
+
+% --- Формулы: одинаковые отступы сверху и снизу ---
+\usepackage{etoolbox}
+
+% Обнуляем встроенные отступы LaTeX
+\AtBeginDocument{%
+  \setlength{\abovedisplayskip}{0pt}
+  \setlength{\belowdisplayskip}{0pt}
+  \setlength{\abovedisplayshortskip}{0pt}
+  \setlength{\belowdisplayshortskip}{0pt}
+}
+
+% Добавляем одинаковые отступы вручную
+\BeforeBeginEnvironment{equation}{\par\vspace{0.5\baselineskip}}
+\AfterEndEnvironment{equation}{\vspace{0.5\baselineskip}}
+
+\BeforeBeginEnvironment{align}{\par\vspace{0.5\baselineskip}}
+\AfterEndEnvironment{align}{\vspace{0.5\baselineskip}}
+
+\BeforeBeginEnvironment{gather}{\par\vspace{0.5\baselineskip}}
+\AfterEndEnvironment{gather}{\vspace{0.5\baselineskip}}
+
+\BeforeBeginEnvironment{multline}{\par\vspace{0.5\baselineskip}}
+\AfterEndEnvironment{multline}{\vspace{0.5\baselineskip}}
+
+% --- Перечисления ---
+\usepackage{enumitem}
+\setlist[itemize]{
+  label={-},
+  leftmargin=0pt,
+  itemindent=\dimexpr\parindent+\labelsep+0.5em\relax,
+  labelsep=0.5em,
+  listparindent=0pt,
+  topsep=0pt,
+  partopsep=0pt,
+  parsep=0pt,
+  itemsep=2pt,
+}
+
+% --- Математика ---
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+
+% --- Графика и рисунки ---
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns}
+
+% --- Таблицы ---
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+
+% --- Подписи к рисункам и таблицам ---
+\usepackage{caption}
+\captionsetup{labelsep=endash, justification=centering, font={normalsize}}
+\captionsetup[figure]{name=Рисунок, position=bottom}
+\captionsetup[table]{name=Таблица, justification=raggedright, singlelinecheck=false, margin=0pt, position=top}
+
+% --- Нумерация формул, рисунков, таблиц по главам ---
+\usepackage{chngcntr}
+\counterwithin{equation}{chapter}
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+
+% --- Содержание ---
+\usepackage[titles]{tocloft}
+\renewcommand{\contentsname}{ОГЛАВЛЕНИЕ}
+
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{\baselineskip}
+
+\setlength{\cftchapindent}{0pt}
+\setlength{\cftsecindent}{1.25cm}
+\setlength{\cftsubsecindent}{2.5cm}
+
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+
+\renewcommand{\cftchapfont}{}
+\renewcommand{\cftchappagefont}{}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{}
+\renewcommand{\cftsubsecfont}{}
+\renewcommand{\cftsubsecpagefont}{}
+
+% --- Заголовки разделов ---
+\usepackage{titlesec}
+
+% Нумерованные главы (1, 2, 3...)
+\titleformat{\chapter}[block]
+  {\normalfont\normalsize\bfseries}
+  {\thechapter}{0.5em}{}
+\titlespacing*{\chapter}{1.25cm}{-20pt}{\baselineskip}
+
+% Ненумерованные главы (ВВЕДЕНИЕ, ОГЛАВЛЕНИЕ, ЗАКЛЮЧЕНИЕ)
+\titleformat{name=\chapter,numberless}[block]
+  {\normalfont\normalsize\bfseries\centering}
+  {}{0pt}{\MakeUppercase}
+\titlespacing*{name=\chapter,numberless}{0pt}{-20pt}{\baselineskip}
+
+% Подразделы (1.1, 1.2...)
+\titleformat{\section}[block]
+  {\normalfont\normalsize\bfseries}
+  {\thesection}{0.5em}{}
+\titlespacing*{\section}{\parindent}{\baselineskip}{\baselineskip}
+
+% Пункты (1.1.1, 1.1.2...)
+\titleformat{\subsection}[block]
+  {\normalfont\normalsize\bfseries}
+  {\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{\parindent}{\baselineskip}{\baselineskip}
+
+\renewcommand{\chaptername}{}
+\renewcommand{\thechapter}{\arabic{chapter}}
+
+% --- Библиография ---
+\usepackage[numbers,sort&compress]{natbib}
+\addto\captionsrussian{\renewcommand{\bibname}{СПИСОК ИСТОЧНИКОВ}}
+
+% --- Гиперссылки ---
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=black
+}
+
+% --- Нумерация страниц ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}

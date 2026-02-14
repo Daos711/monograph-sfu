@@ -1,0 +1,54 @@
+\babel@toc {russian}{}\relax 
+\contentsline {chapter}{Введение}{3}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Объект и предмет исследования}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Подшипники скольжения}{5}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Классификация подшипников скольжения}{5}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Принцип работы гидродинамического подшипника}{6}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Режимы трения}{6}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Конструкции и~материалы}{8}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.5}Области применения}{9}{subsection.1.1.5}%
+\contentsline {subsection}{\numberline {1.1.6}Основные характеристики и~параметры}{10}{subsection.1.1.6}%
+\contentsline {subsection}{\numberline {1.1.7}Направления совершенствования}{11}{subsection.1.1.7}%
+\contentsline {section}{\numberline {1.2}Детерминированные микроструктуры рабочей поверхности}{11}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Определение и~терминология}{12}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Классификация элементов микрорельефа}{13}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Параметры и~расположение элементов}{13}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}Технологии формирования микрорельефа}{15}{subsection.1.2.4}%
+\contentsline {subsection}{\numberline {1.2.5}Связь с~концепцией зелёной трибологии}{16}{subsection.1.2.5}%
+\contentsline {subsection}{\numberline {1.2.6}Влияние микроструктур на~трибологические характеристики}{17}{subsection.1.2.6}%
+\contentsline {subsection}{\numberline {1.2.7}Влияние микроструктур на~динамические характеристики}{19}{subsection.1.2.7}%
+\contentsline {subsection}{\numberline {1.2.8}Влияние микроструктур на~шумовые характеристики}{19}{subsection.1.2.8}%
+\contentsline {chapter}{\numberline {2}Постановка и численное моделирование гидродинамических задач смазочного слоя с детерминированными микроструктурами рабочей поверхности}{22}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Классическая модель для гладкой поверхности}{22}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Ключевые допущения и вывод уравнения Рейнольдса}{22}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Упорная постановка задачи}{28}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Радиальная постановка задачи}{28}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Возвратно-поступательная постановка задачи}{29}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Допущения и область применимости модели}{29}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}Граничные условия и условия замыкания}{30}{subsection.2.1.6}%
+\contentsline {subsection}{\numberline {2.1.7}Целевые функционалы и выходные величины}{30}{subsection.2.1.7}%
+\contentsline {section}{\numberline {2.2}Модель с детерминированными микроструктурами}{30}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Параметризация микрорельефа: $h(x,z)$ и параметры}{30}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Типы геометрии микроструктур}{30}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Типы раскладки микроструктур}{31}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Безразмеризация и определяющие параметры}{31}{subsection.2.2.4}%
+\contentsline {section}{\numberline {2.3}Кавитация и уравнения JFO (массо-сохраняющая постановка)}{31}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Физика разрыва пленки и ограничения модели с обнулением давления}{31}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Уравнения Jakobsson-Floberg-Olsson}{32}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Связь с численной реализацией}{32}{subsection.2.3.3}%
+\contentsline {section}{Выводы по главе 2}{32}{figure.caption.15}%
+\contentsline {chapter}{\numberline {3}Численное моделирование гидродинамических задач смазочного слоя}{35}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Методы решения уравнения Рейнольдса}{35}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Граничные условия}{35}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Методы решения и дискретизация}{35}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Расчёт параметров работы узла}{35}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Учёт эффектов в решении задач смазочного слоя с микроструктурами поверхности}{36}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Нелинейность}{36}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Температура}{36}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Шероховатость поверхности}{36}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Анализ радиального подшипника скольжения центробежного насоса}{37}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Анализ радиального подшипника шарошечного долота}{38}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Анализ упорного подшипника скольжения}{39}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Динамика системы <<ротор -- подшипник скольжения с микроструктурами>>}{40}{chapter.8}%
+\contentsline {chapter}{Заключение}{41}{chapter*.16}%
+\contentsline {chapter}{Список использованных источников}{42}{chapter*.17}%

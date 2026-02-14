@@ -1,0 +1,673 @@
+\chapter{Постановка и численное моделирование гидродинамических задач смазочного слоя с детерминированными микроструктурами рабочей поверхности}
+
+% =============================================================
+% ГЛАВА 2
+% Структура с плейсхолдерами для рисунков и таблиц
+% =============================================================
+
+\section{Классическая модель для гладкой поверхности}
+
+\subsection{Ключевые допущения и вывод уравнения Рейнольдса}
+
+Рассмотрим движение вязкой несжимаемой ньютоновской жидкости в тонком зазоре между двумя твёрдыми поверхностями. Введём декартову систему координат $(x, y, z)$, где плоскость $xz$ совпадает с нижней поверхностью, а ось $y$ направлена перпендикулярно поверхностям (рисунок~\ref{fig:lubrication_scheme}). Толщина смазочного слоя обозначается как $h(x, z, t)$, где $t$ -- время.
+
+% [РИСУНОК 2.1: Схема смазочного слоя]
+% Должен показывать:
+% - Две поверхности (верхняя и нижняя)
+% - Координатные оси x, y, z
+% - Толщина слоя h(x,z,t)
+% - Скорости поверхностей U₁, U₂
+% - Профиль скорости u(y) внутри слоя
+% - Давление p(x,z,t)
+\begin{figure}[h]
+\centering
+\fbox{\parbox{0.8\textwidth}{\centering
+\vspace{3cm}
+ПЛЕЙСХОЛДЕР ДЛЯ РИСУНКА 2.1\\
+Схема смазочного слоя между двумя поверхностями\\
+(найти рисунок "Reynolds lubrication schematic")
+\vspace{3cm}
+}}
+\caption{Схема смазочного слоя между двумя поверхностями}
+\label{fig:lubrication_scheme}
+\end{figure}
+
+\subsubsection*{Исходные уравнения}
+
+Движение жидкости описывается уравнениями Навье--Стокса для несжимаемой жидкости:
+
+\begin{equation}
+\rho\left(\frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v} \cdot \nabla)\mathbf{v}\right) = -\nabla p + \mu \nabla^2 \mathbf{v},
+\label{eq:navier_stokes}
+\end{equation}
+
+и уравнением неразрывности:
+
+\begin{equation}
+\nabla \cdot \mathbf{v} = 0,
+\label{eq:continuity}
+\end{equation}
+
+где $\mathbf{v} = (u, v, w)$ -- вектор скорости;
+\hphantom{где }$\rho$ -- плотность жидкости;
+\hphantom{где }$p$ -- давление;
+\hphantom{где }$\mu$ -- динамическая вязкость.
+
+В компонентной форме уравнения~\eqref{eq:navier_stokes} принимают вид:
+
+\begin{equation}
+\rho\left(\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z}\right) = -\frac{\partial p}{\partial x} + \mu\left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right),
+\label{eq:ns_x}
+\end{equation}
+
+\begin{equation}
+\rho\left(\frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} + w\frac{\partial v}{\partial z}\right) = -\frac{\partial p}{\partial y} + \mu\left(\frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2} + \frac{\partial^2 v}{\partial z^2}\right),
+\label{eq:ns_y}
+\end{equation}
+
+\begin{equation}
+\rho\left(\frac{\partial w}{\partial t} + u\frac{\partial w}{\partial x} + v\frac{\partial w}{\partial y} + w\frac{\partial w}{\partial z}\right) = -\frac{\partial p}{\partial z} + \mu\left(\frac{\partial^2 w}{\partial x^2} + \frac{\partial^2 w}{\partial y^2} + \frac{\partial^2 w}{\partial z^2}\right).
+\label{eq:ns_z}
+\end{equation}
+
+Уравнение неразрывности~\eqref{eq:continuity} в компонентной форме:
+
+\begin{equation}
+\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z} = 0.
+\label{eq:continuity_comp}
+\end{equation}
+
+\subsubsection*{Масштабирование и оценка порядков величин}
+
+Для анализа уравнений введём характерные масштабы задачи:
+
+$L$ -- характерный размер в направлениях $x$ и $z$ (длина подшипника);
+
+$H$ -- характерная толщина смазочного слоя;
+
+$U$ -- характерная скорость движения поверхностей;
+
+$P$ -- характерное давление.
+
+Безразмерные переменные вводятся следующим образом:
+
+\begin{equation}
+\bar{x} = \frac{x}{L}, \quad \bar{y} = \frac{y}{H}, \quad \bar{z} = \frac{z}{L}, \quad \bar{u} = \frac{u}{U}, \quad \bar{v} = \frac{v}{V}, \quad \bar{w} = \frac{w}{U}, \quad \bar{p} = \frac{p}{P},
+\end{equation}
+
+где $V$ -- характерная скорость в направлении $y$, которую нужно определить из уравнения неразрывности.
+
+Из уравнения неразрывности~\eqref{eq:continuity_comp} следует оценка:
+
+\begin{equation}
+\frac{U}{L} \sim \frac{V}{H} \quad \Rightarrow \quad V \sim U\frac{H}{L}.
+\end{equation}
+
+Ключевым параметром в теории смазки является отношение:
+
+\begin{equation}
+\varepsilon = \frac{H}{L} \ll 1,
+\label{eq:epsilon}
+\end{equation}
+
+которое характеризует малость толщины слоя по сравнению с его протяжённостью.
+
+Подставляя безразмерные переменные в уравнения~\eqref{eq:ns_x}--\eqref{eq:ns_z}, получаем оценки для различных членов. Рассмотрим уравнение~\eqref{eq:ns_y}:
+
+\begin{equation}
+\rho\frac{U^2}{L}\varepsilon \sim \frac{P}{H} + \mu\frac{U}{H^2}.
+\end{equation}
+
+Определяем характерный масштаб давления из баланса вязких сил и градиента давления:
+
+\begin{equation}
+P \sim \mu U\frac{L}{H^2}.
+\label{eq:pressure_scale}
+\end{equation}
+
+Вводим число Рейнольдса для смазочного слоя:
+
+\begin{equation}
+\text{Re} = \frac{\rho U H}{\mu}.
+\end{equation}
+
+При условии $\text{Re} \cdot \varepsilon \ll 1$ (что выполняется в большинстве практических случаев) инерционные члены в уравнениях~\eqref{eq:ns_x}--\eqref{eq:ns_z} пренебрежимо малы по сравнению с вязкими и градиентом давления.
+
+Анализируя порядки производных с учётом $\varepsilon \ll 1$, получаем:
+
+\begin{equation}
+\frac{\partial^2}{\partial y^2} \gg \frac{\partial^2}{\partial x^2}, \quad \frac{\partial^2}{\partial y^2} \gg \frac{\partial^2}{\partial z^2}.
+\end{equation}
+
+Таким образом, в уравнениях~\eqref{eq:ns_x} и~\eqref{eq:ns_z} доминируют члены:
+
+\begin{equation}
+\frac{\partial p}{\partial x} \sim \mu\frac{\partial^2 u}{\partial y^2}, \quad \frac{\partial p}{\partial z} \sim \mu\frac{\partial^2 w}{\partial y^2}.
+\end{equation}
+
+Из уравнения~\eqref{eq:ns_y} следует, что $\partial p/\partial y \sim \varepsilon^2 \ll 1$, откуда:
+
+\begin{equation}
+\frac{\partial p}{\partial y} \approx 0.
+\label{eq:dp_dy_zero}
+\end{equation}
+
+Это означает, что давление в смазочном слое не зависит от координаты $y$: $p = p(x, z, t)$.
+
+\subsubsection*{Упрощённые уравнения движения}
+
+С учётом сделанных допущений уравнения движения принимают вид:
+
+\begin{equation}
+\frac{\partial p}{\partial x} = \mu\frac{\partial^2 u}{\partial y^2},
+\label{eq:simplified_x}
+\end{equation}
+
+\begin{equation}
+\frac{\partial p}{\partial z} = \mu\frac{\partial^2 w}{\partial y^2}.
+\label{eq:simplified_z}
+\end{equation}
+
+Уравнение неразрывности сохраняет форму~\eqref{eq:continuity_comp}.
+
+\subsubsection*{Граничные условия}
+
+На поверхностях выполняются условия прилипания (no-slip):
+
+\begin{equation}
+\begin{aligned}
+&y = 0: \quad u = U_1(x, z, t), \quad w = W_1(x, z, t), \quad v = V_1(x, z, t), \\
+&y = h: \quad u = U_2(x, z, t), \quad w = W_2(x, z, t), \quad v = V_2(x, z, t),
+\end{aligned}
+\label{eq:boundary_conditions}
+\end{equation}
+
+где $U_i$, $W_i$, $V_i$ -- компоненты скорости соответствующих поверхностей.
+
+\subsubsection*{Профиль скорости}
+
+Интегрируя уравнение~\eqref{eq:simplified_x} дважды по $y$ и используя граничные условия~\eqref{eq:boundary_conditions}, получаем профиль скорости в направлении $x$:
+
+\begin{equation}
+u(x, y, z, t) = U_1 + \frac{y}{h}(U_2 - U_1) + \frac{1}{2\mu}\frac{\partial p}{\partial x}y(y - h).
+\label{eq:velocity_profile_u}
+\end{equation}
+
+Аналогично для направления $z$:
+
+\begin{equation}
+w(x, y, z, t) = W_1 + \frac{y}{h}(W_2 - W_1) + \frac{1}{2\mu}\frac{\partial p}{\partial z}y(y - h).
+\label{eq:velocity_profile_w}
+\end{equation}
+
+Профиль скорости~\eqref{eq:velocity_profile_u} состоит из двух частей: линейной (куэттовский поток, обусловленный движением поверхностей) и параболической (пуазейлевский поток, обусловленный градиентом давления).
+
+\subsubsection*{Объёмный расход}
+
+Объёмный расход жидкости через единицу длины перпендикулярно направлению $x$ определяется интегрированием скорости по толщине слоя:
+
+\begin{equation}
+q_x = \int_0^h u \, dy.
+\end{equation}
+
+Подставляя выражение~\eqref{eq:velocity_profile_u}:
+
+\begin{equation}
+q_x = \int_0^h \left[U_1 + \frac{y}{h}(U_2 - U_1) + \frac{1}{2\mu}\frac{\partial p}{\partial x}y(y - h)\right] dy.
+\end{equation}
+
+Вычисляем интегралы:
+
+\begin{equation}
+\begin{aligned}
+\int_0^h U_1 \, dy &= U_1 h, \\
+\int_0^h \frac{y}{h}(U_2 - U_1) \, dy &= \frac{U_2 - U_1}{h} \cdot \frac{h^2}{2} = \frac{h}{2}(U_2 - U_1), \\
+\int_0^h \frac{1}{2\mu}\frac{\partial p}{\partial x}y(y - h) \, dy &= \frac{1}{2\mu}\frac{\partial p}{\partial x}\left(\frac{h^3}{3} - \frac{h^3}{2}\right) = -\frac{h^3}{12\mu}\frac{\partial p}{\partial x}.
+\end{aligned}
+\end{equation}
+
+Окончательно для расхода в направлении $x$:
+
+\begin{equation}
+q_x = \frac{h}{2}(U_1 + U_2) - \frac{h^3}{12\mu}\frac{\partial p}{\partial x}.
+\label{eq:flow_rate_x}
+\end{equation}
+
+Аналогично для направления $z$:
+
+\begin{equation}
+q_z = \frac{h}{2}(W_1 + W_2) - \frac{h^3}{12\mu}\frac{\partial p}{\partial z}.
+\label{eq:flow_rate_z}
+\end{equation}
+
+\subsubsection*{Вывод уравнения Рейнольдса}
+
+Из уравнения неразрывности~\eqref{eq:continuity_comp}, интегрируя по толщине слоя от $y = 0$ до $y = h$:
+
+\begin{equation}
+\int_0^h \frac{\partial u}{\partial x} \, dy + \int_0^h \frac{\partial v}{\partial y} \, dy + \int_0^h \frac{\partial w}{\partial z} \, dy = 0.
+\end{equation}
+
+Используя правило Лейбница для дифференцирования интеграла:
+
+\begin{equation}
+\frac{\partial}{\partial x}\int_0^h u \, dy = \int_0^h \frac{\partial u}{\partial x} \, dy + u|_{y=h}\frac{\partial h}{\partial x},
+\end{equation}
+
+и аналогично для $z$.
+
+Для второго интеграла:
+
+\begin{equation}
+\int_0^h \frac{\partial v}{\partial y} \, dy = v|_{y=h} - v|_{y=0} = V_2 - V_1.
+\end{equation}
+
+Кинематическое условие на поверхности $y = h$:
+
+\begin{equation}
+V_2 = \frac{\partial h}{\partial t} + U_2\frac{\partial h}{\partial x} + W_2\frac{\partial h}{\partial z}.
+\end{equation}
+
+Аналогично на поверхности $y = 0$:
+
+\begin{equation}
+V_1 = 0 + U_1 \cdot 0 + W_1 \cdot 0 = 0 \quad \text{(для плоской нижней поверхности)}.
+\end{equation}
+
+Подставляя в уравнение неразрывности и используя определения расходов~\eqref{eq:flow_rate_x} и~\eqref{eq:flow_rate_z}:
+
+\begin{equation}
+\frac{\partial q_x}{\partial x} + \frac{\partial q_z}{\partial z} + \frac{\partial h}{\partial t} = 0.
+\label{eq:continuity_integrated}
+\end{equation}
+
+Подставляя выражения для $q_x$ и $q_z$:
+
+\begin{equation}
+\frac{\partial}{\partial x}\left[\frac{h}{2}(U_1 + U_2) - \frac{h^3}{12\mu}\frac{\partial p}{\partial x}\right] + \frac{\partial}{\partial z}\left[\frac{h}{2}(W_1 + W_2) - \frac{h^3}{12\mu}\frac{\partial p}{\partial z}\right] + \frac{\partial h}{\partial t} = 0.
+\end{equation}
+
+Раскрывая производные:
+
+\begin{equation}
+\frac{\partial}{\partial x}\left(\frac{h^3}{12\mu}\frac{\partial p}{\partial x}\right) + \frac{\partial}{\partial z}\left(\frac{h^3}{12\mu}\frac{\partial p}{\partial z}\right) = \frac{\partial}{\partial x}\left[\frac{h}{2}(U_1 + U_2)\right] + \frac{\partial}{\partial z}\left[\frac{h}{2}(W_1 + W_2)\right] + \frac{\partial h}{\partial t}.
+\label{eq:reynolds_full}
+\end{equation}
+
+Уравнение~\eqref{eq:reynolds_full} является \textbf{обобщённым уравнением Рейнольдса} для случая нестационарного течения с подвижными границами произвольной формы.
+
+Для стационарного случая ($\partial h/\partial t = 0$) и при условии $W_1 = W_2 = 0$ (движение только в направлении $x$) уравнение упрощается:
+
+\begin{equation}
+\frac{\partial}{\partial x}\left(\frac{h^3}{12\mu}\frac{\partial p}{\partial x}\right) + \frac{\partial}{\partial z}\left(\frac{h^3}{12\mu}\frac{\partial p}{\partial z}\right) = \frac{U_1 + U_2}{2}\frac{\partial h}{\partial x}.
+\label{eq:reynolds_steady}
+\end{equation}
+
+Уравнение~\eqref{eq:reynolds_steady} представляет собой \textbf{классическое уравнение Рейнольдса} для гидродинамической смазки.
+
+В случае одной движущейся поверхности (например, $U_1 = U$, $U_2 = 0$):
+
+\begin{equation}
+\frac{\partial}{\partial x}\left(\frac{h^3}{\mu}\frac{\partial p}{\partial x}\right) + \frac{\partial}{\partial z}\left(\frac{h^3}{\mu}\frac{\partial p}{\partial z}\right) = 6U\frac{\partial h}{\partial x}.
+\label{eq:reynolds_one_surface}
+\end{equation}
+
+Полученное уравнение Рейнольдса~\eqref{eq:reynolds_one_surface} является основным уравнением теории гидродинамической смазки и связывает распределение давления $p(x, z)$ в смазочном слое с геометрией зазора $h(x, z)$ и скоростью движения поверхности $U$.
+
+
+\subsection{Упорная постановка задачи}
+
+% Упорный подшипник (thrust bearing)
+%
+% СОДЕРЖАНИЕ:
+% - Геометрия и координаты
+% - Кинематика (скорость поверхностей)
+% - Закон толщины пленки h(x,z)
+% - Граничные условия
+% - Что ищем (давление, зона кавитации)
+% - Выражения для нагрузки W, трения F, расхода Q
+
+Рассмотрим упорный подшипник...
+
+% [РИСУНОК 2.2: Схема упорного подшипника]
+\begin{figure}[h]
+\centering
+\fbox{\parbox{0.8\textwidth}{\centering
+\vspace{3cm}
+ПЛЕЙСХОЛДЕР ДЛЯ РИСУНКА 2.2\\
+Схема упорного подшипника\\
+Координаты (r, θ, y), границы, направление вращения
+\vspace{3cm}
+}}
+\caption{Схема упорного подшипника с координатами}
+\label{fig:thrust_bearing}
+\end{figure}
+
+
+\subsection{Радиальная постановка задачи}
+
+% Радиальный подшипник (journal bearing)
+%
+% СОДЕРЖАНИЕ: аналогично 2.1.2
+
+Рассмотрим радиальный подшипник...
+
+% [РИСУНОК 2.3: Схема радиального подшипника]
+\begin{figure}[h]
+\centering
+\fbox{\parbox{0.8\textwidth}{\centering
+\vspace{3cm}
+ПЛЕЙСХОЛДЕР ДЛЯ РИСУНКА 2.3\\
+Схема радиального подшипника\\
+Вал радиуса R, втулка, эксцентриситет e, координаты
+\vspace{3cm}
+}}
+\caption{Схема радиального подшипника с координатами}
+\label{fig:journal_bearing}
+\end{figure}
+
+
+\subsection{Возвратно-поступательная постановка задачи}
+
+% Пара плунжер-цилиндр
+%
+% СОДЕРЖАНИЕ: аналогично 2.1.2
+
+Рассмотрим пару плунжер-цилиндр...
+
+% [РИСУНОК 2.4: Схема пары плунжер-цилиндр]
+\begin{figure}[h]
+\centering
+\fbox{\parbox{0.8\textwidth}{\centering
+\vspace{3cm}
+ПЛЕЙСХОЛДЕР ДЛЯ РИСУНКА 2.4\\
+Схема пары плунжер-цилиндр\\
+Координаты, направление движения, зазор
+\vspace{3cm}
+}}
+\caption{Схема пары плунжер-цилиндр}
+\label{fig:plunger_cylinder}
+\end{figure}
+
+
+\subsection{Допущения и область применимости модели}
+
+% СОДЕРЖАНИЕ:
+% - Ньютоновская жидкость (μ = const)
+% - Тонкий слой (h << L)
+% - Ламинарность (Re << 1)
+% - Изотермичность / неизотермичность
+% - Несжимаемость (ρ = const)
+% - Отсутствие инерции
+% - Где модель ломается
+
+Принятая модель основана на следующих допущениях:
+
+\begin{enumerate}
+\item \textbf{Ньютоновская жидкость:} вязкость $\mu$ постоянна...
+% TODO: Расписать все допущения
+\end{enumerate}
+
+
+\subsection{Граничные условия и условия замыкания}
+
+% СОДЕРЖАНИЕ:
+% - Что на входе/выходе
+% - Боковые границы
+% - Отрицательное давление
+% - Реализация кавитации (мост к разделу 2.3)
+
+Для замыкания задачи необходимо задать граничные условия...
+
+% TODO: Описать ГУ для каждой постановки
+
+
+\subsection{Целевые функционалы и выходные величины}
+
+% СОДЕРЖАНИЕ:
+% - Нагрузка W
+% - Расход Q
+% - Потери/трение F
+% - Коэффициент трения f
+% - Минимальная толщина пленки h_min
+% - Кавитационная зона
+
+Основными выходными величинами являются...
+
+% [ТАБЛИЦА 2.1: Безразмерные группы и масштабы]
+\begin{table}[h]
+\centering
+\caption{Безразмерные группы и характерные масштабы}
+\label{tab:dimensionless_groups}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Величина} & \textbf{Размерная} & \textbf{Безразмерная} \\
+\hline
+Давление & $p$ & $\bar{p} = p h_0^2 / (\mu U L)$ \\
+Координата & $x$ & $\bar{x} = x / L$ \\
+Толщина & $h$ & $\bar{h} = h / h_0$ \\
+% TODO: Добавить остальные & & \\
+\hline
+\end{tabular}
+\end{table}
+
+
+% =============================================================
+\section{Модель с детерминированными микроструктурами}
+
+\subsection{Параметризация микрорельефа: $h(x,z)$ и параметры}
+
+% СОДЕРЖАНИЕ:
+% - Как задается функция h(x,z)
+% - Параметры: глубина h_d, радиусы a и b, шаг p, доля площади φ
+
+Для учета детерминированных микроструктур рабочую поверхность представляем 
+в виде гладкой базовой поверхности с наложенными регулярными элементами...
+
+% [РИСУНОК 2.5: Типовая микроструктура с параметрами]
+\begin{figure}[h]
+\centering
+\fbox{\parbox{0.8\textwidth}{\centering
+\vspace{3cm}
+ПЛЕЙСХОЛДЕР ДЛЯ РИСУНКА 2.5\\
+Типовая микроструктура (лунка/канавка)\\
+Параметры: a, b, h_d, профиль в разрезе
+\vspace{3cm}
+}}
+\caption{Типовая микроструктура с основными параметрами}
+\label{fig:microtexture_params}
+\end{figure}
+
+% [ТАБЛИЦА 2.2: Параметры микроструктуры]
+\begin{table}[h]
+\centering
+\caption{Параметры детерминированной микроструктуры}
+\label{tab:texture_params}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Параметр} & \textbf{Обозначение} & \textbf{Размерность} \\
+\hline
+Глубина элемента & $h_d$ & мкм \\
+Радиус (полуось) & $a, b$ & мкм \\
+Шаг раскладки & $p$ & мкм \\
+Доля площади & $\phi$ & -- \\
+% TODO: Добавить остальные & & \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Типы геометрии микроструктур}
+
+% СОДЕРЖАНИЕ:
+% - Лунки (круглые/эллиптические/эллипсоидные)
+% - Канавки/борозды (продольные/поперечные)
+% - Комбинированные элементы
+
+Рассмотрим основные типы геометрии микроструктур...
+
+% [РИСУНОК 2.6: Геометрия различных микроструктур]
+\begin{figure}[h]
+\centering
+\fbox{\parbox{0.8\textwidth}{\centering
+\vspace{3cm}
+ПЛЕЙСХОЛДЕР ДЛЯ РИСУНКА 2.6\\
+Типы микроструктур:\\
+(a) круглая лунка, (b) эллиптическая лунка,\\
+(c) продольная канавка, (d) поперечная канавка
+\vspace{3cm}
+}}
+\caption{Основные типы геометрии микроструктур}
+\label{fig:texture_geometries}
+\end{figure}
+
+
+\subsection{Типы раскладки микроструктур}
+
+% СОДЕРЖАНИЕ:
+% - Регулярная решетка (шахматная/прямоугольная/гексагональная)
+% - Кольцевая/секторальная
+% - Филлотаксис
+
+Рассмотрим варианты пространственного расположения микроструктур...
+
+% [РИСУНОК 2.7: Шахматная раскладка]
+\begin{figure}[h]
+\centering
+\fbox{\parbox{0.6\textwidth}{\centering
+\vspace{2cm}
+ПЛЕЙСХОЛДЕР ДЛЯ РИСУНКА 2.7\\
+Шахматная раскладка микролунок\\
+(вид сверху, координаты центров)
+\vspace{2cm}
+}}
+\caption{Шахматная раскладка микроструктур}
+\label{fig:layout_staggered}
+\end{figure}
+
+% [РИСУНОК 2.8: Кольцевая раскладка]
+\begin{figure}[h]
+\centering
+\fbox{\parbox{0.6\textwidth}{\centering
+\vspace{2cm}
+ПЛЕЙСХОЛДЕР ДЛЯ РИСУНКА 2.8\\
+Кольцевая раскладка (для радиального подшипника)
+\vspace{2cm}
+}}
+\caption{Кольцевая раскладка микроструктур}
+\label{fig:layout_annular}
+\end{figure}
+
+% [РИСУНОК 2.9: Филлотаксис]
+\begin{figure}[h]
+\centering
+\fbox{\parbox{0.6\textwidth}{\centering
+\vspace{2cm}
+ПЛЕЙСХОЛДЕР ДЛЯ РИСУНКА 2.9\\
+Раскладка по принципу филлотаксиса
+\vspace{2cm}
+}}
+\caption{Раскладка микроструктур по принципу филлотаксиса}
+\label{fig:layout_phyllotaxis}
+\end{figure}
+
+
+\subsection{Безразмеризация и определяющие параметры}
+
+% СОДЕРЖАНИЕ:
+% - Переход к безразмерным переменным
+% - Набор определяющих параметров
+% - Упрощенные формы для конкретных геометрий
+
+Переход к безразмерным переменным...
+
+% TODO: Написать про безразмеризацию
+
+
+% =============================================================
+\section{Кавитация и уравнения JFO (массо-сохраняющая постановка)}
+
+\subsection{Физика разрыва пленки и ограничения модели с обнулением давления}
+
+% СОДЕРЖАНИЕ:
+% - Что происходит при отрицательном давлении
+% - Почему простое p=0 неверно (нарушение массового баланса)
+% - Физическая картина кавитации
+
+При решении уравнения Рейнольдса в ряде случаев получаются 
+отрицательные значения давления...
+
+% [РИСУНОК 2.10: Схема кавитации]
+\begin{figure}[h]
+\centering
+\fbox{\parbox{0.8\textwidth}{\centering
+\vspace{3cm}
+ПЛЕЙСХОЛДЕР ДЛЯ РИСУНКА 2.10\\
+Схема кавитации в смазочном слое:\\
+зона полного заполнения (p > 0),\\
+зона кавитации (p = 0, частичное заполнение)
+\vspace{3cm}
+}}
+\caption{Схематическое представление кавитации в смазочном слое}
+\label{fig:cavitation_scheme}
+\end{figure}
+
+
+\subsection{Уравнения Jakobsson-Floberg-Olsson}
+
+% СОДЕРЖАНИЕ:
+% - Полная формулировка JFO
+% - Условия переключения
+% - Форма, пригодная для численной реализации
+
+Массо-сохраняющая модель кавитации, предложенная Jakobsson, Floberg и Olsson...
+
+% TODO: Написать уравнения JFO
+
+
+\subsection{Связь с численной реализацией}
+
+% СОДЕРЖАНИЕ:
+% - Что именно будет реализовано в главе 3
+% - Как JFO встраивается в численную схему
+% - Алгоритм переключения между зонами
+
+В главе 3 будет представлена численная реализация описанной модели...
+
+% [РИСУНОК 2.11: Блок-схема модели]
+\begin{figure}[h]
+\centering
+\fbox{\parbox{0.8\textwidth}{\centering
+\vspace{3cm}
+ПЛЕЙСХОЛДЕР ДЛЯ РИСУНКА 2.11\\
+Блок-схема:\\
+Входные параметры → Уравнения Рейнольдса + JFO →\\
+→ Численное решение → Выходные величины
+\vspace{3cm}
+}}
+\caption{Блок-схема математической модели}
+\label{fig:model_flowchart}
+\end{figure}
+
+
+% =============================================================
+\section*{Выводы по главе 2}
+\addcontentsline{toc}{section}{Выводы по главе 2}
+
+% СОДЕРЖАНИЕ (0.5-1.5 страницы):
+% - 5-10 пунктов о принятой модели
+% - Какие допущения
+% - Какие безразмерные формы получены
+% - Какие граничные условия/замыкание (JFO)
+% - Какие параметры микроструктуры будут варьироваться
+
+\begin{enumerate}
+\item В главе представлена математическая постановка задачи гидродинамической 
+смазки с учетом детерминированных микроструктур рабочей поверхности.
+
+\item Получено уравнение Рейнольдса для описания распределения давления 
+в тонком смазочном слое...
+
+% TODO: Добавить остальные выводы (всего 5-10 пунктов)
+
+\end{enumerate}
