@@ -85,6 +85,7 @@ h(\theta, z, t) = c\bigl(1 + \varepsilon(t)\cos(\theta - \varphi(t))\bigr) + \ka
 \label{eq:recip_h_tilt}
 \end{equation}
 где $\kappa$ -- параметр осевой конусности зазора (taper). При $\kappa > 0$ зазор увеличивается от середины к торцу $z = L$; при $\kappa < 0$ -- уменьшается. При $\kappa = 0$ клин вдоль $z$ отсутствует; давление может генерироваться только через squeeze-член ($\partial h/\partial t \neq 0$).
+Параметры $\varepsilon$ и $\kappa$ должны удовлетворять условию $h(\theta, z, t) > 0$ по всей расчётной области; в частности, необходимо $\varepsilon < 1$ и $|\kappa|\,L/2 < c\,(1 - \varepsilon)$.
 
 При наличии детерминированных микроструктур на рабочей поверхности толщина зазора записывается как суперпозиция:
 \begin{equation}
@@ -92,6 +93,15 @@ h(\theta, z, t) = h_{\mathrm{base}}(\theta, z, t) + \Delta h(\theta, z),
 \label{eq:recip_h_textured}
 \end{equation}
 где $\Delta h(\theta, z)$ -- добавка, описывающая геометрию микроструктуры (подробно в разделе~2.2).
+
+Производная по времени от базового зазора~\eqref{eq:recip_h_tilt} при постоянной конусности ($\kappa = \mathrm{const}$) определяется изменением эксцентриситета и угла линии центров:
+\begin{equation}
+\frac{\partial h}{\partial t}
+= c\bigl[\dot{\varepsilon}(t)\cos(\theta - \varphi(t))
+       + \varepsilon(t)\,\dot{\varphi}(t)\sin(\theta - \varphi(t))\bigr],
+\label{eq:recip_dhdt}
+\end{equation}
+где $\dot{\varepsilon} = d\varepsilon/dt$, $\dot{\varphi} = d\varphi/dt$. Слагаемое с конусностью $\kappa$ не вносит вклада в $\partial h/\partial t$, поскольку $\kappa$ не зависит от времени. При фиксированном положении плунжера ($\dot{\varepsilon} = 0$, $\dot{\varphi} = 0$) squeeze-член обращается в нуль, и давление генерируется только клиновым эффектом.
 
 
 \subsubsection*{Уравнение Рейнольдса}
