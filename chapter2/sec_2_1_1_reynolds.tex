@@ -328,7 +328,7 @@ V_2 = \frac{\partial h}{\partial t} + U_2\frac{\partial h}{\partial x} + W_2\fra
 В случае одной движущейся поверхности (например, $U_1 = U$, $U_2 = 0$) и постоянной вязкости $\mu = \mathrm{const}$ обе части уравнения можно умножить на~$12\mu$, что даёт эквивалентную форму, удобную для численной реализации:
 
 \begin{equation}
-\frac{\partial}{\partial x}\left(\frac{h^3}{\mu}\frac{\partial p}{\partial x}\right) + \frac{\partial}{\partial z}\left(\frac{h^3}{\mu}\frac{\partial p}{\partial z}\right) = 6U\frac{\partial h}{\partial x}.
+\frac{\partial}{\partial x}\left(h^3\frac{\partial p}{\partial x}\right) + \frac{\partial}{\partial z}\left(h^3\frac{\partial p}{\partial z}\right) = 6\mu\,U\frac{\partial h}{\partial x}.
 \label{eq:reynolds_one_surface}
 \end{equation}
 
