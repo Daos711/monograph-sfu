@@ -12,12 +12,12 @@
 
 %% Блок 2: Сетка
 Расчётная область покрывается равномерной сеткой:
-\[
+\begin{equation}\label{eq:jfo_grid}
   \begin{aligned}
     &x_{1,i} = x_{1,s} + i\,\Delta x_1, \quad i = 0, \ldots, N_1 - 1, \\
     &x_{2,j} = x_{2,s} + j\,\Delta x_2, \quad j = 0, \ldots, N_2 - 1.
   \end{aligned}
-\]
+\end{equation}
 По периодическим направлениям применяются соответствующие условия
 замыкания.  Операторы $\nabla$, $\nabla\!\cdot$ дискретизуются
 в поверхностных координатах (подраздел~2.1.6); конкретные разностные
@@ -27,12 +27,10 @@
 Уравнение~\eqref{eq:jfo_conservation} записывается в дискретной
 консервативной форме:
 \begin{equation}\label{eq:jfo_discrete}
-  \begin{aligned}
-    &\frac{(\vartheta h)_{i,j}^{n+1} - (\vartheta h)_{i,j}^{n}}{\Delta t}
-    + \frac{F_{i+\frac{1}{2},j} - F_{i-\frac{1}{2},j}}{\Delta x_1} \\
-    &\quad+ \frac{G_{i,j+\frac{1}{2}} - G_{i,j-\frac{1}{2}}}{\Delta x_2}
-    = 0,
-  \end{aligned}
+  \frac{(\vartheta h)_{i,j}^{n+1} - (\vartheta h)_{i,j}^{n}}{\Delta t}
+  + \frac{F_{i+\frac{1}{2},j} - F_{i-\frac{1}{2},j}}{\Delta x_1}
+  + \frac{G_{i,j+\frac{1}{2}} - G_{i,j-\frac{1}{2}}}{\Delta x_2}
+  = 0,
 \end{equation}
 где $F$ и $G$ -- дискретные потоки по направлениям $x_1$ и $x_2$,
 соответствующие напорному и переносному слагаемым
