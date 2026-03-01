@@ -20,20 +20,24 @@
 \]
 Потоки на гранях аппроксимируются центральными разностями:
 \begin{equation}\label{eq:flux_poiseuille}
-  F_{P,\,i+\frac{1}{2},j} = -K_{i+\frac{1}{2},j}\,
-    \frac{p_{i+1,j} - p_{i,j}}{\Delta x_1}, \quad
-  G_{P,\,i,j+\frac{1}{2}} = -K_{i,j+\frac{1}{2}}\,
+\begin{split}
+  F_{P,\,i+\frac{1}{2},j} &= -K_{i+\frac{1}{2},j}\,
+    \frac{p_{i+1,j} - p_{i,j}}{\Delta x_1}, \\
+  G_{P,\,i,j+\frac{1}{2}} &= -K_{i,j+\frac{1}{2}}\,
     \frac{p_{i,j+1} - p_{i,j}}{\Delta x_2}.
+\end{split}
 \end{equation}
 Коэффициент~$K$ на грани вычисляется усреднением значений в соседних узлах (арифметическое или гармоническое усреднение); при достаточно мелкой сетке различия между арифметическим и гармоническим усреднением, как правило, малы.
 
 \textit{Переносной (куэттовский) поток.}
 Для уравнения JFO переносной поток записывается в виде
 \begin{equation}\label{eq:flux_couette}
-  F_{C,\,i+\frac{1}{2},j} = \frac{\vartheta_{\mathrm{up}}\,
-    h_{i+\frac{1}{2},j}}{2}\,U_1, \quad
-  G_{C,\,i,j+\frac{1}{2}} = \frac{\vartheta_{\mathrm{up}}\,
+\begin{split}
+  F_{C,\,i+\frac{1}{2},j} &= \frac{\vartheta_{\mathrm{up}}\,
+    h_{i+\frac{1}{2},j}}{2}\,U_1, \\
+  G_{C,\,i,j+\frac{1}{2}} &= \frac{\vartheta_{\mathrm{up}}\,
     h_{i,j+\frac{1}{2}}}{2}\,U_2,
+\end{split}
 \end{equation}
 Значение $\vartheta_{\mathrm{up}}$ выбирается из наветренного узла: при $U_1 \geq 0$ берут $\vartheta_{\mathrm{up}} = \vartheta_{i,j}$, иначе $\vartheta_{\mathrm{up}} = \vartheta_{i+1,j}$; аналогично по~$x_2$: при $U_2 \geq 0$ берут $\vartheta_{\mathrm{up}} = \vartheta_{i,j}$, иначе $\vartheta_{\mathrm{up}} = \vartheta_{i,j+1}$. При полном заполнении ($\vartheta = 1$) множитель~$\vartheta_{\mathrm{up}}$ обращается в единицу. Толщина~$h$ на грани вычисляется арифметическим усреднением. Схема расчётной ячейки с указанием потоков на гранях показана на рисунке~\ref{fig:cell_fluxes}.
 
