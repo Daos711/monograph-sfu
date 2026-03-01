@@ -16,12 +16,9 @@
 \end{equation}
 где переносные потоки на гранях определены в~\eqref{eq:flux_couette} (раздел~3.2):
 \begin{equation}\label{eq:jfo_theta_flux}
-\begin{split}
-  &F_{C,\,i+\frac{1}{2},j} = \frac{\vartheta_{\mathrm{up}}\,
-    h_{i+\frac{1}{2},j}}{2}\,U_1, \\
-  &G_{C,\,i,j+\frac{1}{2}} = \frac{\vartheta_{\mathrm{up}}\,
-    h_{i,j+\frac{1}{2}}}{2}\,U_2.
-\end{split}
+  F_{C,\,i+\frac{1}{2},j} = \frac{\vartheta_{\mathrm{up}}\,h_{i+\frac{1}{2},j}}{2}\,U_1,
+  \quad
+  G_{C,\,i,j+\frac{1}{2}} = \frac{\vartheta_{\mathrm{up}}\,h_{i,j+\frac{1}{2}}}{2}\,U_2.
 \end{equation}
 Значение~$\vartheta_{\mathrm{up}}$ берётся из наветренного узла по направлению скорости~$\mathbf{U}$ (upwind-схема, раздел~3.2). Толщина на грани~--- арифметическое среднее значений в соседних узлах.
 
@@ -34,11 +31,13 @@
 
 Для нестационарного случая в узлах, отнесённых к кавитационной зоне, используется явная по времени схема (временной шаг~$\Delta t$ из~\eqref{eq:discrete_balance}):
 \begin{equation}\label{eq:jfo_theta_transient}
-  (\vartheta\,h)_{i,j}^{n+1} = (\vartheta\,h)_{i,j}^{n}
-  - \Delta t \left[
+\begin{split}
+  &(\vartheta\,h)_{i,j}^{n+1} = (\vartheta\,h)_{i,j}^{n} - {} \\
+  &- \Delta t \left[
     \frac{F_{C,\,i+\frac{1}{2},j} - F_{C,\,i-\frac{1}{2},j}}{\Delta x_1}
     + \frac{G_{C,\,i,j+\frac{1}{2}} - G_{C,\,i,j-\frac{1}{2}}}{\Delta x_2}
   \right].
+\end{split}
 \end{equation}
 После обновления выполняется отсечка:
 \[

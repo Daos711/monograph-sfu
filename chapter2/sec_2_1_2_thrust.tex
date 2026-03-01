@@ -130,8 +130,11 @@ K = \frac{h_{\mathrm{in}}}{h_{\mathrm{out}}}, \qquad \delta = \frac{h_{\mathrm{i
 
 Стационарное уравнение Рейнольдса для несжимаемой ньютоновской жидкости в цилиндрических координатах принимает вид:
 \begin{equation}
-\frac{1}{r}\frac{\partial}{\partial r}\!\left[r\,\frac{h^3}{12\mu}\,\frac{\partial p}{\partial r}\right] + \frac{1}{r^2}\frac{\partial}{\partial \theta}\!\left[\frac{h^3}{12\mu}\,\frac{\partial p}{\partial \theta}\right] = \frac{\omega}{2}\,\frac{\partial h}{\partial \theta}.
 \label{eq:thrust_reynolds}
+\begin{split}
+&\frac{1}{r}\frac{\partial}{\partial r}\!\left[r\,\frac{h^3}{12\mu}\,\frac{\partial p}{\partial r}\right] + \frac{1}{r^2}\frac{\partial}{\partial \theta}\!\left[\frac{h^3}{12\mu}\,\frac{\partial p}{\partial \theta}\right] = {} \\
+&= \frac{\omega}{2}\,\frac{\partial h}{\partial \theta}.
+\end{split}
 \end{equation}
 
 Множители $1/r$ и $1/r^2$ перед производными в левой части обусловлены дивергентной формой эллиптического оператора $\nabla \cdot (h^3 \nabla p)$ в цилиндрических координатах. Оператор Лапласа является его частным случаем при $h = \mathrm{const}$.
@@ -222,8 +225,11 @@ q_\theta(r,\theta) = \frac{h\,\omega\,r}{2} - \frac{h^3}{12\mu\,r}\,\frac{\parti
 
 Суммарные объёмные расходы через радиальные границы подшипника получаются интегрированием удельных расходов по окружной кромке:
 \begin{equation}
-Q_{\mathrm{out}} = \int_{\theta_0}^{\theta_1} q_r(R_{\mathrm{out}}, \theta)\,R_{\mathrm{out}}\,\mathrm{d}\theta, \qquad Q_{\mathrm{in}} = \int_{\theta_0}^{\theta_1} q_r(R_{\mathrm{in}}, \theta)\,R_{\mathrm{in}}\,\mathrm{d}\theta.
 \label{eq:thrust_Q_radial}
+\begin{split}
+&Q_{\mathrm{out}} = \int_{\theta_0}^{\theta_1} q_r(R_{\mathrm{out}}, \theta)\,R_{\mathrm{out}}\,\mathrm{d}\theta, \\
+&Q_{\mathrm{in}} = \int_{\theta_0}^{\theta_1} q_r(R_{\mathrm{in}}, \theta)\,R_{\mathrm{in}}\,\mathrm{d}\theta.
+\end{split}
 \end{equation}
 
 Множитель $R_{\mathrm{out}}$ (соответственно, $R_{\mathrm{in}}$) перед $d\theta$ обусловлен элементом длины дуги $dl = r\,\mathrm{d}\theta$ на окружности радиуса $r$.
