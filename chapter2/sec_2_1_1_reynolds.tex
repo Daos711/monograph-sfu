@@ -30,19 +30,12 @@
 
 \begin{enumerate}
 \item Жидкость ньютоновская: касательные напряжения пропорциональны скоростям деформации, в частности $\tau_{xy} = \mu\,\partial u/\partial y$, $\tau_{yz} = \mu\,\partial w/\partial y$.
-
 \item Жидкость несжимаемая: $\rho = \mathrm{const}$.
-
 \item Тонкий слой: $H \ll L$, где $H$ -- характерный (порядковый) масштаб толщины смазочного слоя $h(x,z,t)$; малые уклоны поверхностей $|\partial h/\partial x| \ll 1$, $|\partial h/\partial z| \ll 1$.
-
 \item Течение ламинарное, инерционные эффекты пренебрежимо малы: $\mathrm{Re}\cdot\epsilon \ll 1$, где $\epsilon = H/L$.
-
 \item Давление постоянно по толщине слоя: $\partial p/\partial y \approx 0$ (следствие смазочной аппроксимации).
-
 \item Динамическая вязкость постоянна: $\mu = \mathrm{const}$ (температурная зависимость рассматривается отдельно при необходимости).
-
 \item На границах жидкости и твёрдых поверхностей выполняется условие прилипания (no-slip).
-
 \item Объёмные силы (гравитация и др.) малы по сравнению с градиентом давления и не учитываются.
 \end{enumerate}
 
@@ -155,10 +148,13 @@ $P$ -- характерное давление.
 
 С учётом сделанных допущений уравнения движения принимают вид:
 
-\begin{align}
-\frac{\partial p}{\partial x} &= \mu\frac{\partial^2 u}{\partial y^2}, \label{eq:simplified_x} \\
-\frac{\partial p}{\partial z} &= \mu\frac{\partial^2 w}{\partial y^2}. \label{eq:simplified_z}
-\end{align}
+\begin{equation}
+\label{eq:simplified_xz}
+\begin{aligned}
+\frac{\partial p}{\partial x} &= \mu\frac{\partial^2 u}{\partial y^2}, \\
+\frac{\partial p}{\partial z} &= \mu\frac{\partial^2 w}{\partial y^2}.
+\end{aligned}
+\end{equation}
 
 Уравнение неразрывности сохраняет форму~\eqref{eq:continuity_comp}.
 
@@ -177,7 +173,7 @@ $P$ -- характерное давление.
 
 \subsubsection*{Профиль скорости}
 
-Интегрируя уравнение~\eqref{eq:simplified_x} дважды по $y$ и используя граничные условия~\eqref{eq:boundary_conditions}, получаем профиль скорости в направлении $x$:
+Интегрируя уравнение~\eqref{eq:simplified_xz} дважды по $y$ и используя граничные условия~\eqref{eq:boundary_conditions}, получаем профиль скорости в направлении $x$:
 
 \begin{equation}
 u(x, y, z, t) = U_1 + \frac{y}{h}(U_2 - U_1) + \frac{1}{2\mu}\frac{\partial p}{\partial x}y(y - h).
@@ -211,9 +207,9 @@ q_x = \int_0^h \left[U_1 + \frac{y}{h}(U_2 - U_1) + \frac{1}{2\mu}\frac{\partial
 
 \begin{equation}
 \begin{aligned}
-\int_0^h U_1 \,\mathrm{d}y &= U_1 h, \\
-\int_0^h \frac{y}{h}(U_2 - U_1) \,\mathrm{d}y &= \frac{U_2 - U_1}{h} \cdot \frac{h^2}{2} = \frac{h}{2}(U_2 - U_1), \\
-\int_0^h \frac{1}{2\mu}\frac{\partial p}{\partial x}y(y - h) \,\mathrm{d}y &= \frac{1}{2\mu}\frac{\partial p}{\partial x}\left(\frac{h^3}{3} - \frac{h^3}{2}\right) = -\frac{h^3}{12\mu}\frac{\partial p}{\partial x}.
+&\int_0^h U_1 \,\mathrm{d}y = U_1 h, \\
+&\int_0^h \frac{y}{h}(U_2 - U_1) \,\mathrm{d}y = \frac{U_2 - U_1}{h} \cdot \frac{h^2}{2} = \frac{h}{2}(U_2 - U_1), \\
+&\int_0^h \frac{1}{2\mu}\frac{\partial p}{\partial x}y(y - h) \,\mathrm{d}y = \frac{1}{2\mu}\frac{\partial p}{\partial x}\left(\frac{h^3}{3} - \frac{h^3}{2}\right) = -\frac{h^3}{12\mu}\frac{\partial p}{\partial x}.
 \end{aligned}
 \end{equation}
 

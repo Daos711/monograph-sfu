@@ -40,7 +40,7 @@
 
 Область расчёта представляет собой прямоугольник:
 \begin{equation}
-\theta \in [0,\; 2\pi], \qquad z \in [-L/2,\; L/2].
+\theta \in [0,\; 2\pi], \quad z \in [-L/2,\; L/2].
 \label{eq:journal_domain}
 \end{equation}
 
@@ -193,13 +193,13 @@ h(\theta, z) = c\,(1 + \varepsilon\,\cos\theta) + \Delta h(\theta, z),
 
 \textit{По окружной координате~$\theta$.} Область по~$\theta$ охватывает полную окружность, поэтому естественным условием является периодичность:
 \begin{equation}
-p(0, z) = p(2\pi, z), \qquad \frac{\partial p}{\partial \theta}\bigg|_{\theta=0} = \frac{\partial p}{\partial \theta}\bigg|_{\theta=2\pi}.
+p(0, z) = p(2\pi, z), \quad \frac{\partial p}{\partial \theta}\bigg|_{\theta=0} = \frac{\partial p}{\partial \theta}\bigg|_{\theta=2\pi}.
 \label{eq:journal_bc_periodic}
 \end{equation}
 
 \textit{По осевой координате~$z$.} На торцах подшипника давление принимается равным атмосферному:
 \begin{equation}
-p(\theta,\,-L/2) = 0, \qquad p(\theta,\,L/2) = 0,
+p(\theta,\,-L/2) = 0, \quad p(\theta,\,L/2) = 0,
 \label{eq:journal_bc_axial}
 \end{equation}
 где давление отсчитывается от атмосферного ($p = p_{\mathrm{abs}} - p_{\mathrm{atm}}$), как и в подразделе~2.1.2. При наличии принудительной подачи смазки через осевую канавку условие на соответствующем угле $\theta = \theta_{\mathrm{groove}}$ модифицируется: $p(\theta_{\mathrm{groove}}, z) = p_{\mathrm{sup}}$, где $p_{\mathrm{sup}}$ -- давление подачи. Помимо условий Дирихле на торцах, в специальных конструкциях могут применяться условия непротекания $q_z = 0$, эквивалентные $\partial p/\partial z = 0$ (при наличии уплотнений на торцах подшипника), или смешанные условия, когда на части окружности задаётся давление подачи, а на остальной -- атмосферное давление.
@@ -239,10 +239,7 @@ p(\theta,\,-L/2) = 0, \qquad p(\theta,\,L/2) = 0,
 Окружной расход (на единицу длины по осевой координате~$z$):
 \begin{equation}
 \label{eq:journal_q_theta}
-\begin{split}
-&q_\theta(\theta, z) = \frac{h\,U}{2} - \frac{h^3}{12\mu\,R}\,\frac{\partial p}{\partial \theta} = {} \\
-&= \frac{h\,\omega R}{2} - \frac{h^3}{12\mu\,R}\,\frac{\partial p}{\partial \theta}.
-\end{split}
+q_\theta(\theta, z) = \frac{h\,U}{2} - \frac{h^3}{12\mu\,R}\,\frac{\partial p}{\partial \theta} = \frac{h\,\omega R}{2} - \frac{h^3}{12\mu\,R}\,\frac{\partial p}{\partial \theta}.
 \end{equation}
 
 Первое слагаемое представляет куэттовскую составляющую расхода, обусловленную увлечением жидкости вращающимся валом; второе -- пуазейлевскую составляющую, определяемую окружным градиентом давления. Множитель $1/R$ во втором слагаемом обусловлен переходом от производной по дуге $\partial/\partial(R\theta)$ к производной по углу $\partial/\partial\theta$.
