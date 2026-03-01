@@ -21,9 +21,9 @@
 Потоки на гранях аппроксимируются центральными разностями:
 \begin{equation}\label{eq:flux_poiseuille}
 \begin{split}
-  F_{P,\,i+\frac{1}{2},j} &= -K_{i+\frac{1}{2},j}\,
+  &F_{P,\,i+\frac{1}{2},j} = -K_{i+\frac{1}{2},j}\,
     \frac{p_{i+1,j} - p_{i,j}}{\Delta x_1}, \\
-  G_{P,\,i,j+\frac{1}{2}} &= -K_{i,j+\frac{1}{2}}\,
+  &G_{P,\,i,j+\frac{1}{2}} = -K_{i,j+\frac{1}{2}}\,
     \frac{p_{i,j+1} - p_{i,j}}{\Delta x_2}.
 \end{split}
 \end{equation}
@@ -33,9 +33,9 @@
 Для уравнения JFO переносной поток записывается в виде
 \begin{equation}\label{eq:flux_couette}
 \begin{split}
-  F_{C,\,i+\frac{1}{2},j} &= \frac{\vartheta_{\mathrm{up}}\,
+  &F_{C,\,i+\frac{1}{2},j} = \frac{\vartheta_{\mathrm{up}}\,
     h_{i+\frac{1}{2},j}}{2}\,U_1, \\
-  G_{C,\,i,j+\frac{1}{2}} &= \frac{\vartheta_{\mathrm{up}}\,
+  &G_{C,\,i,j+\frac{1}{2}} = \frac{\vartheta_{\mathrm{up}}\,
     h_{i,j+\frac{1}{2}}}{2}\,U_2,
 \end{split}
 \end{equation}

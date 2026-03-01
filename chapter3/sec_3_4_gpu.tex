@@ -13,11 +13,11 @@
 В отличие от классического SOR~\eqref{eq:sor_update}, где часть соседних значений уже обновлена на текущей итерации (индексы~$(m)$ и~$(m+1)$ перемешаны), в Red-Black варианте формула обновления на полуходе цвета~$c$ использует значения всех четырёх соседей с одной и той же итерации:
 \begin{equation}\label{eq:rb_sor_step}
 \begin{split}
-  \tilde{p}_{i,j} &= \frac{1}{a_P}\bigl(
+  &\tilde{p}_{i,j} = \frac{1}{a_P}\bigl(
     a_E\,p_{i+1,j}^{(m)} + a_W\,p_{i-1,j}^{(m)}
     + a_N\,p_{i,j+1}^{(m)} + a_S\,p_{i,j-1}^{(m)}
     + b_{i,j}\bigr), \\
-  p_{i,j}^{(m+1)} &= p_{i,j}^{(m)}
+  &p_{i,j}^{(m+1)} = p_{i,j}^{(m)}
     + \omega\bigl(\tilde{p}_{i,j} - p_{i,j}^{(m)}\bigr).
 \end{split}
 \end{equation}
