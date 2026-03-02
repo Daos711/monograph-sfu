@@ -71,6 +71,18 @@
   itemsep=2pt,
 }
 
+\setlist[enumerate]{
+  leftmargin=0pt,
+  itemindent=\dimexpr\parindent+\labelsep+1.5em\relax,
+  labelsep=0.5em,
+  labelwidth=1.5em,
+  listparindent=0pt,
+  topsep=0pt,
+  partopsep=0pt,
+  parsep=0pt,
+  itemsep=0pt,
+}
+
 % --- Графика ---
 \usepackage{graphicx}
 \graphicspath{{figures/}}
@@ -100,6 +112,8 @@
 
 \setlength{\cftbeforetoctitleskip}{0pt}
 \setlength{\cftaftertoctitleskip}{\baselineskip}
+
+\setlength{\cftbeforechapskip}{0pt}
 
 \setlength{\cftchapindent}{0pt}
 \setlength{\cftsecindent}{5mm}

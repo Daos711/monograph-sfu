@@ -29,7 +29,7 @@
 
 Область расчёта представляет собой прямоугольник:
 \begin{equation}
-\theta \in [0,\; 2\pi], \qquad z \in [0,\; L].
+\theta \in [0,\; 2\pi], \quad z \in [0,\; L].
 \label{eq:recip_domain}
 \end{equation}
 
@@ -62,7 +62,7 @@ U(t) = \frac{ds}{dt}.
 
 Типичный гармонический закон хода, удобный для верификации численных схем:
 \begin{equation}
-s(t) = \frac{S}{2}\bigl(1 - \cos(\Omega t)\bigr), \qquad
+s(t) = \frac{S}{2}\bigl(1 - \cos(\Omega t)\bigr), \quad
 U(t) = \frac{S\,\Omega}{2}\sin(\Omega t),
 \label{eq:recip_harmonic}
 \end{equation}
@@ -160,7 +160,7 @@ h(\theta, z, t) = h_{\mathrm{base}}(\theta, z, t) + \Delta h(\theta, z),
 
 \textit{По окружной координате~$\theta$.} Область по~$\theta$ охватывает полную окружность, поэтому естественным условием является периодичность:
 \begin{equation}
-p(0, z, t) = p(2\pi, z, t), \qquad
+p(0, z, t) = p(2\pi, z, t), \quad
 \frac{\partial p}{\partial\theta}\bigg|_{\theta=0}
 = \frac{\partial p}{\partial\theta}\bigg|_{\theta=2\pi}.
 \label{eq:recip_bc_periodic}
@@ -170,7 +170,7 @@ p(0, z, t) = p(2\pi, z, t), \qquad
 
 \textit{(a) Открытые торцы (атмосферные кромки, базовый вариант):}
 \begin{equation}
-p(\theta, 0, t) = 0, \qquad p(\theta, L, t) = 0.
+p(\theta, 0, t) = 0, \quad p(\theta, L, t) = 0.
 \label{eq:recip_bc_open}
 \end{equation}
 
@@ -178,7 +178,7 @@ p(\theta, 0, t) = 0, \qquad p(\theta, L, t) = 0.
 
 \textit{(b) Давление подачи/слива (гидросистема):}
 \begin{equation}
-p(\theta, 0, t) = p_{\mathrm{in}}(t), \qquad p(\theta, L, t) = p_{\mathrm{out}}(t).
+p(\theta, 0, t) = p_{\mathrm{in}}(t), \quad p(\theta, L, t) = p_{\mathrm{out}}(t).
 \label{eq:recip_bc_pressure}
 \end{equation}
 
@@ -186,7 +186,7 @@ p(\theta, 0, t) = p_{\mathrm{in}}(t), \qquad p(\theta, L, t) = p_{\mathrm{out}}(
 
 \textit{(c) Уплотнённые торцы (отсутствие протекания):}
 \begin{equation}
-\frac{\partial p}{\partial z}\bigg|_{z=0} = 0, \qquad
+\frac{\partial p}{\partial z}\bigg|_{z=0} = 0, \quad
 \frac{\partial p}{\partial z}\bigg|_{z=L} = 0.
 \label{eq:recip_bc_sealed}
 \end{equation}

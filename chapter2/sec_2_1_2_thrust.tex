@@ -22,7 +22,7 @@
 
 Область расчёта для одного сектора определяется следующим образом:
 \begin{equation}
-r \in [R_{\mathrm{in}},\; R_{\mathrm{out}}], \qquad \theta \in [\theta_0,\; \theta_1],
+r \in [R_{\mathrm{in}},\; R_{\mathrm{out}}], \quad \theta \in [\theta_0,\; \theta_1],
 \label{eq:thrust_domain}
 \end{equation}
 где $R_{\mathrm{in}}$ и $R_{\mathrm{out}}$ -- внутренний и наружный радиусы рабочей зоны подшипника, $\theta_0$ и $\theta_1$ -- угловые границы сектора. Угловая протяжённость сектора обозначается
@@ -102,7 +102,7 @@ h_{\min} = \min_{(r,\theta)} h(r,\theta);
 
 Для характеристики формы клина вводятся безразмерные параметры конвергенции:
 \begin{equation}
-K = \frac{h_{\mathrm{in}}}{h_{\mathrm{out}}}, \qquad \delta = \frac{h_{\mathrm{in}} - h_{\mathrm{out}}}{h_{\mathrm{out}}} = K - 1.
+K = \frac{h_{\mathrm{in}}}{h_{\mathrm{out}}}, \quad \delta = \frac{h_{\mathrm{in}} - h_{\mathrm{out}}}{h_{\mathrm{out}}} = K - 1.
 \label{eq:thrust_convergence}
 \end{equation}
 
@@ -119,7 +119,7 @@ K = \frac{h_{\mathrm{in}}}{h_{\mathrm{out}}}, \qquad \delta = \frac{h_{\mathrm{i
 В рассматриваемой задаче скорость скольжения направлена по окружной координате~$\theta$: нижняя поверхность неподвижна ($U_{\theta,1} = 0$), верхняя движется со скоростью $U_{\theta,2} = \omega r$; радиальные скорости обеих поверхностей равны нулю. Правая часть обобщённого уравнения Рейнольдса~\eqref{eq:reynolds_full} в цилиндрических координатах записывается в дивергентной форме:
 \begin{equation}
 \mathrm{RHS} = \frac{1}{r}\frac{\partial}{\partial\theta}\!\left[\frac{h}{2}
-(U_{\theta,1} + U_{\theta,2})\right], \qquad U_{\theta,1} = 0,\quad U_{\theta,2} = \omega r,
+(U_{\theta,1} + U_{\theta,2})\right], \quad U_{\theta,1} = 0,\quad U_{\theta,2} = \omega r,
 \label{eq:thrust_rhs_div}
 \end{equation}
 откуда, учитывая, что произведение $\omega r$ не зависит от~$\theta$:
@@ -131,10 +131,7 @@ K = \frac{h_{\mathrm{in}}}{h_{\mathrm{out}}}, \qquad \delta = \frac{h_{\mathrm{i
 Стационарное уравнение Рейнольдса для несжимаемой ньютоновской жидкости в цилиндрических координатах принимает вид:
 \begin{equation}
 \label{eq:thrust_reynolds}
-\begin{split}
-&\frac{1}{r}\frac{\partial}{\partial r}\!\left[r\,\frac{h^3}{12\mu}\,\frac{\partial p}{\partial r}\right] + \frac{1}{r^2}\frac{\partial}{\partial \theta}\!\left[\frac{h^3}{12\mu}\,\frac{\partial p}{\partial \theta}\right] = {} \\
-&= \frac{\omega}{2}\,\frac{\partial h}{\partial \theta}.
-\end{split}
+\frac{1}{r}\frac{\partial}{\partial r}\!\left[r\,\frac{h^3}{12\mu}\,\frac{\partial p}{\partial r}\right] + \frac{1}{r^2}\frac{\partial}{\partial \theta}\!\left[\frac{h^3}{12\mu}\,\frac{\partial p}{\partial \theta}\right] = \frac{\omega}{2}\,\frac{\partial h}{\partial \theta}.
 \end{equation}
 
 Множители $1/r$ и $1/r^2$ перед производными в левой части обусловлены дивергентной формой эллиптического оператора $\nabla \cdot (h^3 \nabla p)$ в цилиндрических координатах. Оператор Лапласа является его частным случаем при $h = \mathrm{const}$.
@@ -159,8 +156,8 @@ K = \frac{h_{\mathrm{in}}}{h_{\mathrm{out}}}, \qquad \delta = \frac{h_{\mathrm{i
 \textit{Базовый вариант (атмосферные кромки).} На всех четырёх границах сектора давление принимается равным атмосферному:
 \begin{equation}
 \begin{aligned}
-p(r,\,\theta_0) &= 0, \qquad & p(r,\,\theta_1) &= 0, \\
-p(R_{\mathrm{in}},\,\theta) &= 0, \qquad & p(R_{\mathrm{out}},\,\theta) &= 0.
+&p(r,\,\theta_0) = 0, \quad p(r,\,\theta_1) = 0, \\
+&p(R_{\mathrm{in}},\,\theta) = 0, \quad p(R_{\mathrm{out}},\,\theta) = 0.
 \end{aligned}
 \label{eq:thrust_bc_base}
 \end{equation}
