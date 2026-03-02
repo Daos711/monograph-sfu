@@ -48,13 +48,12 @@
 % --- Формулы: автоматические отступы по СТУ ---
 \makeatletter
 \AtBeginDocument{%
-  % Номинально 1 строка, но с гибкостью −4pt для вёрстки страниц
-  % NB: «1\baselineskip» извлекает dimen из glue-регистра;
-  %     голый \baselineskip TeX съедает целиком, и «plus ...» утекает в текст
-  \abovedisplayskip=1\baselineskip plus 0pt minus 4pt\relax
-  \abovedisplayshortskip=1\baselineskip plus 0pt minus 4pt\relax
-  \belowdisplayskip=1\baselineskip plus 0pt minus 4pt\relax
-  \belowdisplayshortskip=1\baselineskip plus 0pt minus 4pt\relax
+  % Номинально 1 строка; minus-компонента позволяет TeX'у сжать
+  % отступ до ~½ строки, чтобы формула не вылезала за нижнюю границу
+  \abovedisplayskip=1\baselineskip plus 0pt minus 8pt\relax
+  \abovedisplayshortskip=1\baselineskip plus 0pt minus 8pt\relax
+  \belowdisplayskip=1\baselineskip plus 0pt minus 8pt\relax
+  \belowdisplayshortskip=1\baselineskip plus 0pt minus 8pt\relax
 
   % Формула в начале страницы: БЕЗ отступа сверху
   \everydisplay\expandafter{%
