@@ -41,10 +41,11 @@
 % --- Формулы: автоматические отступы по СТУ ---
 \makeatletter
 \AtBeginDocument{%
-  \setlength{\abovedisplayskip}{\baselineskip}
-  \setlength{\abovedisplayshortskip}{\baselineskip}
-  \setlength{\belowdisplayskip}{\baselineskip}
-  \setlength{\belowdisplayshortskip}{\baselineskip}
+  % Номинально 1 строка, но с гибкостью ±4pt для вёрстки страниц
+  \abovedisplayskip=\baselineskip plus 0pt minus 4pt\relax
+  \abovedisplayshortskip=\baselineskip plus 0pt minus 4pt\relax
+  \belowdisplayskip=\baselineskip plus 0pt minus 4pt\relax
+  \belowdisplayshortskip=\baselineskip plus 0pt minus 4pt\relax
 
   % Формула в начале страницы: БЕЗ отступа сверху
   \everydisplay\expandafter{%
@@ -56,6 +57,13 @@
   }%
 }
 \makeatother
+
+% Разрешить разрыв страницы перед формулой (по умолчанию 10000 = запрещено)
+\predisplaypenalty=0
+
+% Защита от висячих строк (вдов/сирот)
+\widowpenalty=150
+\clubpenalty=150
 
 % --- Перечисления ---
 \usepackage{enumitem}
