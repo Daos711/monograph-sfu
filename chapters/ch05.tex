@@ -36,17 +36,24 @@
 \centering
 \caption{Параметры радиального подшипника скольжения}
 \label{tab:journal_params}
-\begin{tabular}{lccc}
+\begin{tabular}{|l|c|c|c|}
 \hline
-Параметр & Обозначение & Значение & Единица \\
+\multicolumn{1}{|c|}{\textbf{Параметр}} & \textbf{Обозначение} & \textbf{Значение} & \textbf{Единица} \\
 \hline
 Радиус вала & $R$ & --- & мм \\
+\hline
 Длина подшипника & $L$ & --- & мм \\
+\hline
 Радиальный зазор & $c$ & --- & мкм \\
+\hline
 Относительный зазор & $\psi = c/R$ & --- & -- \\
+\hline
 Отношение $L/D$ & $L/D$ & --- & -- \\
+\hline
 Угловая скорость & $\omega$ & --- & рад/с \\
+\hline
 Динамическая вязкость & $\mu_0$ & --- & Па$\cdot$с \\
+\hline
 Давление кавитации & $p_{\mathrm{cav}}$ & --- & Па \\
 \hline
 \end{tabular}
@@ -195,13 +202,16 @@ $\mu_f = f/F$, а также осевые утечки~$Q_{\mathrm{out}}$
 \caption{Интегральные характеристики гладкого подшипника
   при $\varepsilon = \varepsilon_{\mathrm{nom}}$}
 \label{tab:smooth_results}
-\begin{tabular}{lcc}
+\begin{tabular}{|l|c|c|}
 \hline
-Характеристика & Обозначение & Значение \\
+\multicolumn{1}{|c|}{\textbf{Характеристика}} & \textbf{Обозначение} & \textbf{Значение} \\
 \hline
 Несущая сила (безразмерная) & $F$ & --- \\
+\hline
 Угол нагружения & $\psi$ & --- \\
+\hline
 Коэффициент трения & $\mu_f$ & --- \\
+\hline
 Осевые утечки (безразмерные) & $Q_{\mathrm{out}}$ & --- \\
 \hline
 \end{tabular}
@@ -282,12 +292,14 @@ $\mu_f = f/F$, а также осевые утечки~$Q_{\mathrm{out}}$
 \centering
 \caption{Параметры рассматриваемых конфигураций текстуры}
 \label{tab:texture_configs}
-\begin{tabular}{lccccc}
+\begin{tabular}{|l|c|c|c|c|c|}
 \hline
-Конфигурация & $H_p$ & $A^*$ & $B^*$ & $\varphi$ & Зона \\
+\multicolumn{1}{|c|}{\textbf{Конфигурация}} & $\boldsymbol{H_p}$ & $\boldsymbol{A^*}$ & $\boldsymbol{B^*}$ & $\boldsymbol{\varphi}$ & \textbf{Зона} \\
 \hline
 T1 & --- & --- & --- & --- & --- \\
+\hline
 T2 & --- & --- & --- & --- & --- \\
+\hline
 T3 & --- & --- & --- & --- & --- \\
 \hline
 \end{tabular}
@@ -334,10 +346,12 @@ T3 & --- & --- & --- & --- & --- \\
 Для количественного сравнения текстурированного
 и гладкого подшипников вводятся нормированные показатели:
 \begin{equation}
-  G_F = \frac{F_{\mathrm{tex}}}{F_{\mathrm{smooth}}}, \quad
-  G_f = \frac{\mu_{f,\mathrm{tex}}}{\mu_{f,\mathrm{smooth}}}, \quad
-  G_Q = \frac{Q_{\mathrm{out,tex}}}{Q_{\mathrm{out,smooth}}}, \quad
+\begin{split}
+  &G_F = \frac{F_{\mathrm{tex}}}{F_{\mathrm{smooth}}}, \quad
+  G_f = \frac{\mu_{f,\mathrm{tex}}}{\mu_{f,\mathrm{smooth}}}, \\
+  &G_Q = \frac{Q_{\mathrm{out,tex}}}{Q_{\mathrm{out,smooth}}}, \quad
   G_h = \frac{h_{\min,\mathrm{tex}}}{h_{\min,\mathrm{smooth}}}.
+\end{split}
   \label{eq:gain_factors}
 \end{equation}
 Значение~$G > 1$ указывает на рост соответствующего показателя
