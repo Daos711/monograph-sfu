@@ -74,6 +74,22 @@
 \widowpenalty=150
 \clubpenalty=150
 
+% --- Блок «где» после формул (пояснение переменных) ---
+% Использование:
+%   \begin{conditions}
+%   $n$ -- порядковый номер элемента;\\
+%   $r_n$ -- расстояние от центра, м.
+%   \end{conditions}
+\newlength{\wherewd}
+\AtBeginDocument{\settowidth{\wherewd}{где\enspace}}
+
+\newenvironment{conditions}{%
+  \par\noindent где\enspace\ignorespaces
+  \begin{minipage}[t]{\dimexpr\linewidth-\wherewd\relax}%
+}{%
+  \end{minipage}\par
+}
+
 % --- Перечисления ---
 \usepackage{enumitem}
 \setlist[itemize]{
