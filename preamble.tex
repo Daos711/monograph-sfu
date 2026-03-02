@@ -19,6 +19,13 @@
 
 \raggedbottom
 
+% topskip = зазор TeX'а между верхом текстового блока и baseline 1-й строки.
+% По умолчанию для 14pt extbook = 14.5pt (≈5 мм), из-за чего заголовки глав
+% (СОДЕРЖАНИЕ, ВВЕДЕНИЕ, 1 …) смещаются вниз от рамки.
+% При topskip=1pt зазор практически нулевой; число строк на странице не меняется,
+% т.к. для 14pt шрифта высота строки (~10pt) всегда > topskip.
+\topskip=1pt
+
 % --- Интервалы, абзац ---
 \usepackage{setspace}
 \singlespacing
@@ -149,14 +156,12 @@
 \titleformat{\chapter}[block]
   {\normalfont\normalsize\bfseries}
   {\thechapter}{0.5em}{}
-% before-skip = -5pt компенсирует \topskip (≈14.5pt) так, чтобы
-% верх заглавных букв совпадал с верхней границей текстового блока
-\titlespacing*{\chapter}{\parindent}{-5pt}{\baselineskip}
+\titlespacing*{\chapter}{\parindent}{0pt}{\baselineskip}
 
 \titleformat{name=\chapter,numberless}[block]
   {\normalfont\normalsize\bfseries\centering}
   {}{0pt}{\MakeUppercase}
-\titlespacing*{name=\chapter,numberless}{0pt}{-5pt}{\baselineskip}
+\titlespacing*{name=\chapter,numberless}{0pt}{0pt}{\baselineskip}
 
 \titleformat{\section}[block]
   {\normalfont\normalsize\bfseries}
