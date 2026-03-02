@@ -14,10 +14,17 @@
   left=30mm, right=10mm,
   top=20mm, bottom=20mm,
   nohead,
-  includefoot
+  footskip=10mm  % номер страницы — посередине нижнего поля
 }
 
 \raggedbottom
+
+% topskip = зазор TeX'а между верхом текстового блока и baseline 1-й строки.
+% По умолчанию для 14pt extbook = 14.5pt (≈5 мм), из-за чего заголовки глав
+% (СОДЕРЖАНИЕ, ВВЕДЕНИЕ, 1 …) смещаются вниз от рамки.
+% При малом topskip зазор исчезает; число строк на странице не меняется,
+% т.к. для 14pt шрифта высота строки (~10pt) всегда > topskip.
+\topskip=0.1pt
 
 % --- Интервалы, абзац ---
 \usepackage{setspace}
@@ -41,10 +48,12 @@
 % --- Формулы: автоматические отступы по СТУ ---
 \makeatletter
 \AtBeginDocument{%
-  \setlength{\abovedisplayskip}{\baselineskip}
-  \setlength{\abovedisplayshortskip}{\baselineskip}
-  \setlength{\belowdisplayskip}{\baselineskip}
-  \setlength{\belowdisplayshortskip}{\baselineskip}
+  % Номинально 1 строка; minus-компонента позволяет TeX'у сжать
+  % отступ до ~½ строки, чтобы формула не вылезала за нижнюю границу
+  \abovedisplayskip=1\baselineskip plus 0pt minus 8pt\relax
+  \abovedisplayshortskip=1\baselineskip plus 0pt minus 8pt\relax
+  \belowdisplayskip=1\baselineskip plus 0pt minus 8pt\relax
+  \belowdisplayshortskip=1\baselineskip plus 0pt minus 8pt\relax
 
   % Формула в начале страницы: БЕЗ отступа сверху
   \everydisplay\expandafter{%
@@ -56,6 +65,29 @@
   }%
 }
 \makeatother
+
+% Разрешить разрыв страницы перед формулой (по умолчанию 10000 = запрещено)
+\predisplaypenalty=0
+
+% Защита от висячих строк (вдов/сирот)
+\widowpenalty=150
+\clubpenalty=150
+
+% --- Блок «где» после формул (пояснение переменных) ---
+% Использование:
+%   \begin{conditions}
+%   $n$ -- порядковый номер элемента;\\
+%   $r_n$ -- расстояние от центра, м.
+%   \end{conditions}
+\newlength{\wherewd}
+\AtBeginDocument{\settowidth{\wherewd}{где\enspace}}
+
+\newenvironment{conditions}{%
+  \par\noindent где\enspace\ignorespaces
+  \begin{minipage}[t]{\dimexpr\linewidth-\wherewd\relax}%
+}{%
+  \end{minipage}\par
+}
 
 % --- Перечисления ---
 \usepackage{enumitem}
@@ -186,3 +218,4 @@
 \setlength{\@fpsep}{\baselineskip}
 \setlength{\@fpbot}{0pt}
 \makeatother
+

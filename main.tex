@@ -15,6 +15,9 @@
 
 % --- Титульный лист ---
 \input{chapters/titlepage}
+% titlepage-окружение в oneside сбрасывает счётчик на 1;
+% титульник = стр. 1 (без номера), оборот = стр. 2
+\setcounter{page}{2}
 
 % --- Оборот титула (УДК, ББК, аннотация) ---
 \input{chapters/annotation}

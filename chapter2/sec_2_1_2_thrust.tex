@@ -25,7 +25,12 @@
 r \in [R_{\mathrm{in}},\; R_{\mathrm{out}}], \quad \theta \in [\theta_0,\; \theta_1],
 \label{eq:thrust_domain}
 \end{equation}
-где $R_{\mathrm{in}}$ и $R_{\mathrm{out}}$ -- внутренний и наружный радиусы рабочей зоны подшипника, $\theta_0$ и $\theta_1$ -- угловые границы сектора. Угловая протяжённость сектора обозначается
+\begin{conditions}
+$R_{\mathrm{in}}$ и $R_{\mathrm{out}}$ -- внутренний и наружный радиусы рабочей зоны подшипника;\\
+$\theta_0$ и $\theta_1$ -- угловые границы сектора.
+\end{conditions}
+
+Угловая протяжённость сектора обозначается
 \begin{equation}
 \beta = \theta_1 - \theta_0.
 \label{eq:thrust_beta}
@@ -85,7 +90,12 @@ h = h(r, \theta),
 h(r,\theta) = h_{\mathrm{in}} + (h_{\mathrm{out}} - h_{\mathrm{in}})\,\frac{\theta - \theta_0}{\theta_1 - \theta_0},
 \label{eq:thrust_h_wedge}
 \end{equation}
-где $h_{\mathrm{in}} = h(\theta_0)$ -- толщина смазочного слоя на входной кромке сектора, $h_{\mathrm{out}} = h(\theta_1)$ -- толщина на выходной кромке. Необходимым условием генерации давления является сходящийся характер зазора по направлению движения, т.\,е.
+\begin{conditions}
+$h_{\mathrm{in}} = h(\theta_0)$ -- толщина смазочного слоя на входной кромке сектора;\\
+$h_{\mathrm{out}} = h(\theta_1)$ -- толщина на выходной кромке.
+\end{conditions}
+
+Необходимым условием генерации давления является сходящийся характер зазора по направлению движения, т.\,е.
 \begin{equation}
 h_{\mathrm{in}} > h_{\mathrm{out}}.
 \label{eq:thrust_convergence_condition}
