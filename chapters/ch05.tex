@@ -118,9 +118,9 @@ $h_{\min} = c\,(1 - \varepsilon)$ стремится к нулю.
 подшипника $\Lambda = 2R/L$; данный параметр определяет
 соотношение окружного и осевого масштабов задачи.
 
-Кавитация учитывается условием Рейнольдса: в области, где давление
-опускается ниже давления кавитации, оно полагается равным нулю
-($P = 0$). Данное условие является упрощением постановки JFO
+Кавитация учитывается по условию Рейнольдса: давление не допускается
+ниже давления кавитации, т.е.\ $P \geq 0$; в области разрыва плёнки
+принимается $P = 0$. Данное условие является упрощением постановки JFO
 (\eqref{eq:jfo_conservation}, \eqref{eq:jfo_complementarity});
 полная JFO-постановка составляет предмет дальнейшего развития модели.
 
@@ -139,15 +139,11 @@ $h_{\min} = c\,(1 - \varepsilon)$ стремится к нулю.
 
 \begin{figure}[!ht]
 \centering
-\fbox{\parbox{0.85\textwidth}{\centering
-  \vspace{3.0cm}
-  ПЛЕЙСХОЛДЕР ДЛЯ РИСУНКА\\
-  Развёрнутая расчётная область $(\theta, Z)$:\\
-  периодичность по $\theta$, $P = 0$ на торцах $Z = -1$ и $Z = 1$,\\
-  зона кавитации (схематически)
-  \vspace{3.0cm}
-}}
-\caption{Расчётная область и граничные условия}
+\includegraphics[width=0.80\textwidth]{figures/ch05/fig_journal_domain.png}
+\caption{Расчётная область $(\theta, Z) \in [0,\,2\pi] \times [-1,\,1]$
+  и граничные условия: периодичность по~$\theta$, $P = 0$ на торцах
+  $Z = \pm 1$; зона давления ($P > 0$) и кавитационная зона ($P = 0$)
+  разделены границей кавитации (штриховая линия).}
 \label{fig:journal_domain}
 \end{figure}
 
@@ -177,12 +173,12 @@ $h_{\min} = c\,(1 - \varepsilon)$ стремится к нулю.
 \centering
 \begin{minipage}[b]{0.48\textwidth}
   \centering
-  \includegraphics[width=\textwidth]{ch05/fig_P3D_smooth.png}
+  \includegraphics[width=\textwidth]{figures/ch05/fig_P3D_smooth.png}
 \end{minipage}
 \hfill
 \begin{minipage}[b]{0.48\textwidth}
   \centering
-  \includegraphics[width=\textwidth]{ch05/fig_cav_smooth.png}
+  \includegraphics[width=\textwidth]{figures/ch05/fig_cav_smooth.png}
 \end{minipage}
 \caption{Поле безразмерного давления $P(\theta, Z)$ (слева)
   и карта кавитационной зоны (справа) для гладкого подшипника
@@ -194,7 +190,10 @@ $h_{\min} = c\,(1 - \varepsilon)$ стремится к нулю.
 По полученному полю давления вычисляются интегральные
 характеристики подшипника: компоненты несущей силы
 и результирующая сила~$F$ с углом нагружения~$\varphi_{\mathrm{load}}$
-(\eqref{eq:func_F_components}, \eqref{eq:func_psi}),
+(\eqref{eq:func_F_components}, \eqref{eq:func_psi}; в формуле~\eqref{eq:func_psi}
+угол в общей постановке обозначен~$\psi$, в настоящей главе используется
+обозначение~$\varphi_{\mathrm{load}}$, чтобы не путать с относительным
+зазором $\psi = c/R$),
 безразмерная сила трения~$f$ и коэффициент трения
 $\mu_f = f/F$, а также осевые утечки~$Q_{\mathrm{out}}$
 (\eqref{eq:func_Q_journal}). Значения указанных характеристик
@@ -246,7 +245,7 @@ $\mu_f(\varepsilon)$ и~$Q_{\mathrm{out}}(\varepsilon)$ представлены
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.75\textwidth]{ch05/fig_F_vs_epsilon.png}
+\includegraphics[width=0.75\textwidth]{figures/ch05/fig_F_vs_epsilon.png}
 \caption{Зависимость несущей силы~$F$ от эксцентриситета~$\varepsilon$
   для гладкого подшипника и трёх конфигураций текстуры T1, T2, T3.}
 \label{fig:F_vs_epsilon}
@@ -254,14 +253,14 @@ $\mu_f(\varepsilon)$ и~$Q_{\mathrm{out}}(\varepsilon)$ представлены
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.75\textwidth]{ch05/fig_mu_vs_epsilon.png}
+\includegraphics[width=0.75\textwidth]{figures/ch05/fig_mu_vs_epsilon.png}
 \caption{Зависимость коэффициента трения~$\mu_f$ от эксцентриситета~$\varepsilon$.}
 \label{fig:mu_vs_epsilon}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.75\textwidth]{ch05/fig_Q_vs_epsilon.png}
+\includegraphics[width=0.75\textwidth]{figures/ch05/fig_Q_vs_epsilon.png}
 \caption{Зависимость осевых утечек~$Q_{\mathrm{out}}$ от эксцентриситета~$\varepsilon$.}
 \label{fig:Q_vs_epsilon}
 \end{figure}
@@ -316,10 +315,12 @@ T3 & 0{,}20 & 0{,}0861 & 0{,}0633 & 0{,}240 & $0^{\circ}$--$180^{\circ}$ \\
 \end{table}
 
 Конфигурации T1 и T2 различаются глубиной лунок: T2 имеет вдвое
-большую глубину ($H_p = 0{,}40$) при той же зоне нанесения (зона
-расходящегося зазора). Конфигурация T3 отличается зоной нанесения:
-лунки расположены в зоне сходящегося клина ($0^{\circ}$--$180^{\circ}$)
-при глубине, совпадающей с T1.
+большую глубину ($H_p = 0{,}40$) при той же зоне нанесения
+($90^{\circ}$--$270^{\circ}$). Сектор $90^{\circ}$--$270^{\circ}$
+включает область минимального зазора ($\theta \approx \pi$)
+и часть расходящегося участка. Конфигурация T3 отличается зоной
+нанесения: лунки расположены в секторе $0^{\circ}$--$180^{\circ}$
+(зона сходящегося клина) при глубине, совпадающей с T1.
 
 Карта кавитационной зоны для конфигурации~T1, на которой различима
 шахматная раскладка элементов, представлена на
@@ -327,7 +328,7 @@ T3 & 0{,}20 & 0{,}0861 & 0{,}0633 & 0{,}240 & $0^{\circ}$--$180^{\circ}$ \\
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.75\textwidth]{ch05/fig_cav_T1.png}
+\includegraphics[width=0.75\textwidth]{figures/ch05/fig_cav_T1.png}
 \caption{Карта кавитационной зоны текстурированного подшипника (конфигурация~T1,
   $\varepsilon = 0{,}6$). Шахматная раскладка элементов различима
   по локальным <<островкам>> зоны $P > 0$ внутри лунок.}
@@ -350,8 +351,7 @@ T3 & 0{,}20 & 0{,}0861 & 0{,}0633 & 0{,}240 & $0^{\circ}$--$180^{\circ}$ \\
 область, изменяя баланс потоков на границе фазового перехода.
 Результирующее влияние микроструктур на интегральные
 характеристики определяется совокупностью этих эффектов
-и зависит от зоны нанесения, глубины и плотности покрытия
-элементов.
+и зависит от зоны нанесения, глубины и коэффициента покрытия~$\varphi$.
 
 \textit{Нормированные показатели эффективности.}
 Для количественного сравнения текстурированного
@@ -428,12 +428,12 @@ T3 & 5588{,}9 & 139{,}4 & 0{,}01366 & 12{,}75 & 1{,}110 & 0{,}888 & 1{,}074 & 1{
 \centering
 \begin{minipage}[b]{0.48\textwidth}
   \centering
-  \includegraphics[width=\textwidth]{ch05/fig_P3D_T1.png}
+  \includegraphics[width=\textwidth]{figures/ch05/fig_P3D_T1.png}
 \end{minipage}
 \hfill
 \begin{minipage}[b]{0.48\textwidth}
   \centering
-  \includegraphics[width=\textwidth]{ch05/fig_cav_T2.png}
+  \includegraphics[width=\textwidth]{figures/ch05/fig_cav_T2.png}
 \end{minipage}
 \caption{Поле давления $P(\theta, Z)$ для конфигурации~T1 (слева)
   и карта кавитационной зоны для конфигурации~T2 (справа)
@@ -449,7 +449,7 @@ T3 & 5588{,}9 & 139{,}4 & 0{,}01366 & 12{,}75 & 1{,}110 & 0{,}888 & 1{,}074 & 1{
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.75\textwidth]{ch05/fig_P_phi_comparison.png}
+\includegraphics[width=0.75\textwidth]{figures/ch05/fig_P_phi_comparison.png}
 \caption{Распределение безразмерного давления $P(\theta)$ при $Z = 0$
   для гладкого подшипника и конфигурации~T1 ($\varepsilon = 0{,}6$).
   Вторичные пики на кривой T1 соответствуют лункам,
@@ -459,7 +459,7 @@ T3 & 5588{,}9 & 139{,}4 & 0{,}01366 & 12{,}75 & 1{,}110 & 0{,}888 & 1{,}074 & 1{
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.75\textwidth]{ch05/fig_gains_nom.png}
+\includegraphics[width=0.75\textwidth]{figures/ch05/fig_gains_nom.png}
 \caption{Нормированные показатели эффективности текстурирования $G_F$, $G_f$,
   $G_Q$, $G_h$ для конфигураций T1, T2, T3 при $\varepsilon = 0{,}6$.
   Пунктирная горизонталь $G = 1$ соответствует уровню гладкого подшипника.}
