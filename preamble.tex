@@ -34,9 +34,23 @@
 \setlength{\parindent}{1.25cm}
 \setlength{\parskip}{0pt}
 
-\tolerance=1000
-\hbadness=1000
-\emergencystretch=1.5em
+% Восстановление отступа первой строки после выключных формул
+\makeatletter
+\renewcommand{\@doendpe}{%
+  \@endpetrue
+  \everypar{{\setbox\z@\lastbox}%
+            \everypar{}%
+            \@endpefalse
+            \indent}%
+}
+\makeatother
+
+% Запрет переносов в тексте (по требованию преподавателя)
+\tolerance=10000
+\hbadness=10000
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\emergencystretch=3em
 
 % --- Математика ---
 \usepackage[fleqn]{amsmath}
@@ -122,7 +136,7 @@
 \usepackage{graphicx}
 \graphicspath{{figures/}}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,calc,patterns}
+\usetikzlibrary{arrows.meta,calc,patterns,matrix,positioning}
 
 % --- Таблицы ---
 \usepackage{booktabs}
@@ -166,6 +180,7 @@
 \renewcommand{\cftsubsecpagefont}{}
 
 % --- Заголовки ---
+\usepackage{hyphenat}   % \nohyphens — запрет переносов в заголовках (СТУ 7.5–07–2021)
 \usepackage{titlesec}
 
 \renewcommand{\chaptername}{}
@@ -173,22 +188,22 @@
 
 \titleformat{\chapter}[block]
   {\normalfont\normalsize\bfseries}
-  {\hspace*{1.25cm}\thechapter}{0.5em}{}
+  {\hspace*{1.25cm}\thechapter}{0.5em}{\nohyphens}
 \titlespacing*{\chapter}{0pt}{0pt}{\baselineskip}
 
 \titleformat{name=\chapter,numberless}[block]
   {\normalfont\normalsize\bfseries\centering}
-  {}{0pt}{\MakeUppercase}
+  {}{0pt}{\nohyphens\MakeUppercase}
 \titlespacing*{name=\chapter,numberless}{0pt}{0pt}{\baselineskip}
 
 \titleformat{\section}[block]
   {\normalfont\normalsize\bfseries}
-  {\hspace*{1.25cm}\thesection}{0.5em}{}
+  {\hspace*{1.25cm}\thesection}{0.5em}{\nohyphens}
 \titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
 
 \titleformat{\subsection}[block]
   {\normalfont\normalsize\bfseries}
-  {\hspace*{1.25cm}\thesubsection}{0.5em}{}
+  {\hspace*{1.25cm}\thesubsection}{0.5em}{\nohyphens}
 \titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
 
 % --- Библиография ---
