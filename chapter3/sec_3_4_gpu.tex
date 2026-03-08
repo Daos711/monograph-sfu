@@ -11,65 +11,13 @@
 
 \begin{figure}[!ht]
 \centering
-\begin{tikzpicture}[
-  cell/.style={minimum size=9mm, draw, thick, font=\footnotesize},
-  red cell/.style={cell, fill=red!25},
-  black cell/.style={cell, fill=gray!30},
-  updated/.style={cell, fill=blue!20},
-  not updated/.style={cell, fill=white},
-  arr/.style={-{Stealth[length=2.5mm]}, thick, blue!70!black},
-  lbl/.style={font=\small\bfseries, anchor=south},
-]
-% --- (а) Обычный SOR ---
-\node[lbl] at (1.35, 2.6) {(а) Обычный SOR};
-\foreach \i in {0,...,3} {
-  \foreach \j in {0,...,3} {
-    \pgfmathtruncatemacro{\idx}{\i*4+\j}
-    \pgfmathtruncatemacro{\half}{6}
-    \ifnum\idx<\half
-      \node[updated] (a\i\j) at (\j*1, -\i*1) {};
-      \node[font=\scriptsize] at (\j*1, -\i*1) {$m{+}1$};
-    \else
-      \node[not updated] (a\i\j) at (\j*1, -\i*1) {};
-      \node[font=\scriptsize] at (\j*1, -\i*1) {$m$};
-    \fi
-  }
-}
-% Стрелка последовательного обхода
-\draw[arr] (-0.55,0.55) -- (3.55,0.55) -- (3.55,-0.45)
-           -- (-0.55,-0.45) -- (-0.55,-1.45) -- (0.55,-1.45);
-\node[font=\scriptsize, blue!70!black, anchor=west] at (0.7,-1.45) {$\ldots$};
-
-% --- (б) Red--Black SOR ---
-\def\xoff{6}
-\node[lbl] at (1.35+\xoff, 2.6) {(б) Red--Black SOR};
-\foreach \i in {0,...,3} {
-  \foreach \j in {0,...,3} {
-    \pgfmathtruncatemacro{\col}{mod(\i+\j,2)}
-    \ifnum\col=0
-      \node[red cell] (b\i\j) at (\j*1+\xoff, -\i*1) {};
-      \node[font=\scriptsize] at (\j*1+\xoff, -\i*1) {$m{+}\tfrac{1}{2}$};
-    \else
-      \node[black cell] (b\i\j) at (\j*1+\xoff, -\i*1) {};
-      \node[font=\scriptsize] at (\j*1+\xoff, -\i*1) {$m$};
-    \fi
-  }
-}
-% Подписи
-\node[font=\scriptsize, anchor=north] at (1.35, -3.7) {%
-  \begin{tabular}{@{}l@{}}
-  \tikz\draw[fill=blue!20] (0,0) rectangle (0.3,0.3); обновлено ($m{+}1$)\\
-  \tikz\draw[fill=white] (0,0) rectangle (0.3,0.3); не обновлено ($m$)
-  \end{tabular}};
-\node[font=\scriptsize, anchor=north] at (1.35+\xoff, -3.7) {%
-  \begin{tabular}{@{}l@{}}
-  \tikz\draw[fill=red!25] (0,0) rectangle (0.3,0.3); красные~--- обновлены ($m{+}\tfrac{1}{2}$)\\
-  \tikz\draw[fill=gray!30] (0,0) rectangle (0.3,0.3); чёрные~--- не тронуты ($m$)
-  \end{tabular}};
-% Надпись полуход
-\node[font=\scriptsize, blue!70!black] at (1.35+\xoff, -3.0)
-  {полуход red: все красные независимы};
-\end{tikzpicture}
+\fbox{\parbox{0.85\textwidth}{\centering
+  \vspace{3.5cm}
+  ПЛЕЙСХОЛДЕР ДЛЯ РИСУНКА\\
+  Сравнение обхода сетки при обычном SOR и шахматной (Red--Black)\\
+  раскраске: (а)~последовательный обход; (б)~полуход red
+  \vspace{3.5cm}
+}}
 \caption{Сравнение обхода сетки при обычном SOR и шахматной (Red--Black)
 раскраске: (а)~последовательный обход по строкам смешивает индексы
 итераций; (б)~полуход red обновляет только красные узлы, чёрные соседи
