@@ -73,29 +73,31 @@ $\mu_0$ -- характерное значение вязкости.
 \centering
 \caption{Характерные масштабы для безразмерной постановки}
 \label{tab:nondim_scales}
-\begin{tabularx}{\textwidth}{|X|c|c|c|c|c|c|c|c|}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
 \hline
 \multicolumn{1}{|c|}{\textbf{Постановка}} & $\boldsymbol{s_1}$ & $\boldsymbol{s_2}$ & $\boldsymbol{L_1}$ & $\boldsymbol{L_2}$ & $\boldsymbol{h_0}$ & $\boldsymbol{U_0}$ & $\boldsymbol{p_0}$ & $\boldsymbol{t_0}$ \\
 \hline
 Упорная (2.1.2)
   & $R\theta$ & $r$ & $R$ & $R_{\mathrm{out}} - R_{\mathrm{in}}$
   & $h_{\min}$ или $h_{\mathrm{mean}}$
-  & $\omega R$ & $\frac{6\mu_0\omega R^2}{h_0^2}$ & --
+  & $\omega R$ & $\dfrac{6\mu_0\omega R^2}{h_0^2}$ & --
 \\[6pt]
 \hline
 Радиальная (2.1.3)
   & $R\theta$ & $z$ & $R$ & $L$
   & $c$
-  & $\omega R$ & $\frac{6\mu_0\omega R^2}{c^2}$ & --
+  & $\omega R$ & $\dfrac{6\mu_0\omega R^2}{c^2}$ & --
 \\[6pt]
 \hline
 Возвратно-пост.\ (2.1.4)
   & $z$ & $R\theta$ & $L$ & $R$
   & $c$
-  & $\max|U(t)|$ & $\frac{6\mu_0\,U_0\,L}{c^2}$ & $1/\Omega$
+  & $\max|U(t)|$ & $\dfrac{6\mu_0\,U_0\,L}{c^2}$ & $1/\Omega$
 \\[6pt]
 \hline
-\end{tabularx}
+\end{tabular}%
+}
 \end{table}
 
 В упорной и радиальной постановках задача стационарна, поэтому временной масштаб $t_0$ не требуется (обозначено <<-->>{} в таблице). Координата $s_1$ соответствует направлению увлечения, а $s_2$ -- поперечному направлению. Для упорного подшипника $R$ -- характерный радиус (например, $R_{\mathrm{out}}$ или среднее значение $(R_{\mathrm{in}} + R_{\mathrm{out}})/2$). При подстановке масштабов из таблицы в общее уравнение~\eqref{eq:reynolds_nondim} получаются безразмерные формы, согласованные с размерными уравнениями~\eqref{eq:thrust_reynolds_num},~\eqref{eq:journal_reynolds_num},~\eqref{eq:recip_reynolds_num}.
