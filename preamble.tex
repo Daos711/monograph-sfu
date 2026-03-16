@@ -128,6 +128,7 @@
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
+\usepackage{tabularx}
 
 % --- Подписи ---
 \usepackage{caption}
@@ -184,6 +185,9 @@
 \titleformat{\section}[block]
   {\normalfont\normalsize\bfseries}
   {\hspace*{1.25cm}\thesection}{0.5em}{}
+\titleformat{name=\section,numberless}[block]
+  {\normalfont\normalsize\bfseries}
+  {}{0pt}{\hspace*{1.25cm}}
 \titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
 
 \titleformat{\subsection}[block]
