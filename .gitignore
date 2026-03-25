@@ -17,3 +17,7 @@
 
 # Compiled PDF (regenerated on each build)
 *.pdf
+
+# Word conversion artifacts
+monograph-prepared/
+*.docx
