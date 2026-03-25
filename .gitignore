@@ -21,3 +21,6 @@
 # Word conversion artifacts
 monograph-prepared/
 *.docx
+
+# Backup files
+*.bak
