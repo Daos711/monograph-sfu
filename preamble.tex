@@ -204,6 +204,22 @@
 ]{biblatex}
 \addbibresource{bibliography.bib}
 
+% Запятая вместо точки с запятой между номерами: [10, 11]
+\DeclareDelimFormat{multicitedelim}{\addcomma\space}
+% Диапазоны через дефис: [10-12]
+\DeclareDelimFormat{multinamedelim}{\addcomma\space}
+% Убрать вертикальные отступы между записями
+\setlength{\bibitemsep}{0pt}
+\setlength{\bibparsep}{0pt}
+% Висячий отступ: отступ только на первой строке
+\setlength{\bibhangindent}{0pt}
+% Заменить длинное тире (---) на короткое (--)
+\renewcommand*{\bibrangedash}{\textendash}
+\DefineBibliographyStrings{russian}{%
+  pages = {С\adddot},%
+  number = {\textnumero},%
+}
+
 % --- Гиперссылки ---
 \usepackage[hidelinks]{hyperref}
 
