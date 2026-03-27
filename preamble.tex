@@ -196,10 +196,13 @@
 \titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
 
 % --- Библиография ---
-\usepackage[numbers,sort&compress]{natbib}
-\addto\captionsrussian{%
-  \renewcommand{\bibname}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}%
-}
+\usepackage[
+  backend=biber,
+  style=gost-numeric,
+  natbib=true,
+  sorting=none
+]{biblatex}
+\addbibresource{bibliography.bib}
 
 % --- Гиперссылки ---
 \usepackage[hidelinks]{hyperref}
