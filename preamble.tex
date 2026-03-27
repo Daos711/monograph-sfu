@@ -222,11 +222,9 @@
     \renewcommand*{\makelabel}[1]{\hss##1}}
   {\endlist}
   {\item}
-% Заменить длинное тире на короткое в диапазонах страниц
+% Заменить длинное тире на короткое везде в библиографии
 \renewcommand*{\bibrangedash}{\textendash}
-\makeatletter
-\def\blx@gost@dash{\addperiod\space\textendash\space}
-\makeatother
+\renewcommand*{\newunitpunct}{\addperiod\space\textendash\space}
 
 % --- Гиперссылки ---
 \usepackage[hidelinks]{hyperref}
