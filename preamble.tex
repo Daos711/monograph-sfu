@@ -206,18 +206,28 @@
 
 % Запятая вместо точки с запятой между номерами: [10, 11]
 \DeclareDelimFormat{multicitedelim}{\addcomma\space}
-% Диапазоны через дефис: [10-12]
-\DeclareDelimFormat{multinamedelim}{\addcomma\space}
 % Убрать вертикальные отступы между записями
 \setlength{\bibitemsep}{0pt}
 \setlength{\bibparsep}{0pt}
-% Убрать висячий отступ (продолжение записи без отступа)
-% Заменить длинное тире (---) на короткое (--)
+% Убрать висячий отступ: все строки записи без доп. отступа
+\defbibenvironment{bibliography}
+  {\list{\printtext[labelnumberwidth]{\printfield{labelprefix}\printfield{labelnumber}.}}
+     {\setlength{\labelwidth}{\labelnumberwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemindent}{0pt}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+    \renewcommand*{\makelabel}[1]{\hss##1}}
+  {\endlist}
+  {\item}
+% Заменить длинное тире на короткое в разделителях полей
 \renewcommand*{\bibrangedash}{\textendash}
-\DefineBibliographyStrings{russian}{%
-  pages = {С\adddot},%
-  number = {\textnumero},%
-}
+\renewcommand*{\mkgostemph}[1]{\emph{#1}}
+\makeatletter
+\renewcommand*{\bbx@gostdash}{\addperiod\space\textendash\space}
+\makeatother
 
 % --- Гиперссылки ---
 \usepackage[hidelinks]{hyperref}
