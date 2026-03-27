@@ -9,6 +9,8 @@
 *.synctex(busy)
 *.bbl
 *.blg
+*.bcf
+*.run.xml
 *.lof
 *.lot
 *.nav
