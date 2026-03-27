@@ -222,11 +222,10 @@
     \renewcommand*{\makelabel}[1]{\hss##1}}
   {\endlist}
   {\item}
-% Заменить длинное тире на короткое в разделителях полей
+% Заменить длинное тире на короткое в диапазонах страниц
 \renewcommand*{\bibrangedash}{\textendash}
-\renewcommand*{\mkgostemph}[1]{\emph{#1}}
 \makeatletter
-\renewcommand*{\bbx@gostdash}{\addperiod\space\textendash\space}
+\def\blx@gost@dash{\addperiod\space\textendash\space}
 \makeatother
 
 % --- Гиперссылки ---
