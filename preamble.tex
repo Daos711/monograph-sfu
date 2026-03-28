@@ -261,8 +261,13 @@
     \renewcommand*{\makelabel}[1]{\hss##1}}
   {\endlist}
   {\item}
-% Короткое тире в диапазонах страниц: С. 57–63
+% Короткое тире в диапазонах страниц и разделителях: С. 57-63
 \renewcommand*{\bibrangedash}{\textendash}
+% Переопределить разделитель полей gost (длинное тире → короткое)
+\AtBeginBibliography{%
+  \DeclareDelimFormat{titleyeardelim}{\addperiod\space\textendash\space}%
+  \renewcommand*{\labelnamepunct}{\addperiod\space}%
+}
 
 % --- Гиперссылки ---
 \usepackage[hidelinks]{hyperref}
