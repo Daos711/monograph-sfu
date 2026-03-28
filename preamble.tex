@@ -42,6 +42,45 @@
 \usepackage[fleqn]{amsmath}
 \usepackage{amssymb,amsthm}
 \usepackage{mathtools}
+\usepackage{upgreek}
+
+% Прямые греческие буквы по умолчанию
+\renewcommand{\alpha}{\upalpha}
+\renewcommand{\beta}{\upbeta}
+\renewcommand{\gamma}{\upgamma}
+\renewcommand{\delta}{\updelta}
+\renewcommand{\epsilon}{\upepsilon}
+\renewcommand{\varepsilon}{\upvarepsilon}
+\renewcommand{\zeta}{\upzeta}
+\renewcommand{\eta}{\upeta}
+\renewcommand{\theta}{\uptheta}
+\renewcommand{\vartheta}{\upvartheta}
+\renewcommand{\iota}{\upiota}
+\renewcommand{\kappa}{\upkappa}
+\renewcommand{\lambda}{\uplambda}
+\renewcommand{\mu}{\upmu}
+\renewcommand{\nu}{\upnu}
+\renewcommand{\xi}{\upxi}
+\renewcommand{\pi}{\uppi}
+\renewcommand{\rho}{\uprho}
+\renewcommand{\sigma}{\upsigma}
+\renewcommand{\tau}{\uptau}
+\renewcommand{\upsilon}{\upupsilon}
+\renewcommand{\phi}{\upphi}
+\renewcommand{\varphi}{\upvarphi}
+\renewcommand{\chi}{\upchi}
+\renewcommand{\psi}{\uppsi}
+\renewcommand{\omega}{\upomega}
+\renewcommand{\Gamma}{\Upgamma}
+\renewcommand{\Delta}{\Updelta}
+\renewcommand{\Theta}{\Uptheta}
+\renewcommand{\Lambda}{\Uplambda}
+\renewcommand{\Xi}{\Upxi}
+\renewcommand{\Pi}{\Uppi}
+\renewcommand{\Sigma}{\Upsigma}
+\renewcommand{\Phi}{\Upphi}
+\renewcommand{\Psi}{\Uppsi}
+\renewcommand{\Omega}{\Upomega}
 
 \setlength{\mathindent}{1.25cm}
 
@@ -196,9 +235,38 @@
 \titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
 
 % --- Библиография ---
-\usepackage[numbers,sort&compress]{natbib}
-\addto\captionsrussian{%
-  \renewcommand{\bibname}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}%
+\usepackage[
+  backend=biber,
+  style=gost-numeric,
+  natbib=true,
+  sorting=none
+]{biblatex}
+\addbibresource{bibliography.bib}
+
+% Запятая вместо точки с запятой между номерами: [10, 11]
+\DeclareDelimFormat{multicitedelim}{\addcomma\space}
+% Убрать вертикальные отступы между записями
+\setlength{\bibitemsep}{0pt}
+\setlength{\bibparsep}{0pt}
+% Убрать висячий отступ: все строки записи без доп. отступа
+\defbibenvironment{bibliography}
+  {\list{\printtext[labelnumberwidth]{\printfield{labelprefix}\printfield{labelnumber}.}}
+     {\setlength{\labelwidth}{\labelnumberwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemindent}{0pt}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+    \renewcommand*{\makelabel}[1]{\hss##1}}
+  {\endlist}
+  {\item}
+% Короткое тире в диапазонах страниц и разделителях: С. 57-63
+\renewcommand*{\bibrangedash}{\textendash}
+% Переопределить разделитель полей gost (длинное тире → короткое)
+\AtBeginBibliography{%
+  \DeclareDelimFormat{titleyeardelim}{\addperiod\space\textendash\space}%
+  \renewcommand*{\labelnamepunct}{\addperiod\space}%
 }
 
 % --- Гиперссылки ---
