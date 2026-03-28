@@ -1,4 +1,5 @@
 @echo off
+chcp 65001 >nul
 pdflatex main.tex
 biber main
 pdflatex main.tex
