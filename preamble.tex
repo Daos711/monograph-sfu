@@ -264,7 +264,7 @@
 % Диапазоны страниц: дефис (134-144)
 \renewcommand{\bibrangedash}{-}
 % Разделитель полей: короткое тире (-- )
-\renewcommand*{\BibDash}{-- }
+\AtBeginDocument{\renewcommand*{\BibDash}{-- }}
 
 % --- Гиперссылки ---
 \usepackage[hidelinks]{hyperref}
