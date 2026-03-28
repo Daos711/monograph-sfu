@@ -261,8 +261,11 @@
     \renewcommand*{\makelabel}[1]{\hss##1}}
   {\endlist}
   {\item}
-% Диапазоны страниц: дефис (134-144)
-\AtBeginBibliography{\renewcommand{\bibrangedash}{-}}
+% Диапазоны страниц: дефис (134-144), разделители полей: короткое тире (--)
+\AtBeginBibliography{%
+  \renewcommand{\bibrangedash}{-}%
+  \def\textemdash{\textendash}%
+}
 
 % --- Гиперссылки ---
 \usepackage[hidelinks]{hyperref}
